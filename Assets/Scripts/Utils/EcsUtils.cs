@@ -22,7 +22,7 @@ namespace YANTH {
     public static class SpeechUtils {
         // Adds/updates speech component on entity
         // When overwrite is true it will replace existing text
-        public static void Add(in EcsEntity entity, string text, float chance = 1f, float TTL = 1.5f, bool overwrite = true) {
+        public static void Add(in EcsEntity entity, string text, float chance = 1f, float TTL = 1.5f, bool overwrite = false) {
             if (Random.value > chance)
                 return;
             
@@ -34,7 +34,7 @@ namespace YANTH {
             speech.TTL = TTL;
         }
 
-        public static void Add(in EcsEntity entity, string[] lines, float chance = 1f, float TTL = 1.5f, bool overwrite = true) {
+        public static void Add(in EcsEntity entity, string[] lines, float chance = 1f, float TTL = 1.5f, bool overwrite = false) {
             var idx = UnityEngine.Random.Range(0, lines.Length);
             Add(entity, lines[idx], chance, TTL, overwrite);
         }

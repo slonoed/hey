@@ -37,7 +37,7 @@ namespace YANTH {
             inventory.size = gameConfig.playerInventorySize;
             inventory.items = new ResourceType[inventory.size];
 
-            SpeechUtils.Add(entity, "HEY! Use keyboard to move!", 1f, TTL : 5f);
+            // SpeechUtils.Add(entity, "HEY! Use keyboard to move!", 1f, TTL : 5f);
         }
     }
 }
