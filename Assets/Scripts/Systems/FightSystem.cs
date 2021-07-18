@@ -10,6 +10,7 @@ namespace YANTH {
         readonly EcsWorld world = null;
         readonly EcsFilter<Hero, Clrd, Health> heroFilter = null;
         readonly EcsFilter<Enemy, Clrd, Trnsfrm> enemyFilter = null;
+        readonly EcsFilter<Player> playerFilter = null;
 
         void IEcsRunSystem.Run() {
             // TODO slonoed: this system is overloaded (logically and structurally)
@@ -45,11 +46,11 @@ namespace YANTH {
                         var enemyEntity = hero.targetEnemy;
                         ref var enemyHealth = ref enemyEntity.Get<Health>();
                         enemyHealth.value = Math.Max(0, enemyHealth.value - gameConfig.attack);
-                        
+
                         ref var enemyTransform = ref enemyEntity.Get<Trnsfrm>();
                         CreateSound(gameConfig.heroFightSound, enemyTransform.value.position);
                         enemyTransform.value.DOMove(enemyTransform.value.position + Vector3.up * 0.5f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
-                        
+
                         hero.lastHitTime = Time.time;
                         if (enemyHealth.value == 0) {
                             hero.state = HeroState.Roam;
@@ -81,11 +82,17 @@ namespace YANTH {
                 heroHealth.value = Math.Max(0, heroHealth.value - enemy.attack);
                 enemy.lastHitTime = Time.time;
 
-                // ref var enemyEntity = ref ;
                 ref var enemyTransform = ref enemyFilter.GetEntity(ei).Get<Trnsfrm>();
                 CreateSound(gameConfig.enemyFightSound, enemyTransform.value.position);
                 ref var heroTransform = ref heroFilter.GetEntity(hi).Get<Trnsfrm>();
                 heroTransform.value.DOMove(heroTransform.value.position + Vector3.down * 0.3f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
+
+                SpeechUtils.Add(heroFilter.GetEntity(hi), GetRandomDamageVoidLine(), 0.8f);
+                foreach (var pi in playerFilter) {
+                    if (UnityEngine.Random.value > 0.8) {
+                        SpeechUtils.Add(playerFilter.GetEntity(pi), "HAHA!", 1f);
+                    }
+                }
             }
         }
 
@@ -120,10 +127,14 @@ namespace YANTH {
             return true;
         }
 
-        void CreateSound(AudioClip clip, Vector3 position = new Vector3()) {
-            ref var sound = ref world.NewEntity().Get<Sound>();
-            sound.position = position;
-            sound.clip = clip;
+        void CreateSound(AudioClip clip, Vector3 position) {
+            SoundUtils.Create(world, clip, position);
+        }
+
+        string GetRandomDamageVoidLine() {
+            var lines = new string[] { "OUCH", "OI", "MOMMY" };
+            var idx = UnityEngine.Random.Range(0, lines.Length - 1);
+            return lines[idx];
         }
     }
 }

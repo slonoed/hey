@@ -11,6 +11,8 @@ namespace YANTH {
         public GameObject coinPrefab;
         public GameObject herbPrefab;
         public GameObject healthbarPrefab;
+        [Tooltip("Used to show speech bubble near character")]
+        public GameObject speechBubblePrefab;
 
         [Header("Hero")]
         [Range(0.1f, 10f)]
