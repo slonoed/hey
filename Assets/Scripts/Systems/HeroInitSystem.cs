@@ -42,7 +42,7 @@ namespace YANTH {
                 Lg.Warn("No Collider2D component on Hero prefab");
             }
 
-            gameRefs.virtualCamera.Follow = go.transform;
+            heroEntity.Get<CameraFollowTarget>();
         }
     }
 }

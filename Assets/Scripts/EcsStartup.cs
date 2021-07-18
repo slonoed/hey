@@ -60,10 +60,12 @@ namespace YANTH {
                 .Add(new HeroDropReceivingTweenSystem())
                 .Add(new SoundSystem())
                 .Add(new HeroSpeechZoneSystem())
+                .Add(new PlayerRunOverMonsterSystem())
                 .Add(new SpeechBubbleSystem())
                 .Add(new LevelChangeSystem())
                 .Add(new HeroDeathSystem())
                 .Add(new ResourceGenerationSystem())
+                .Add(new CameraFollowSystem())
                 .Add(new DestroySystem())
 
                 // register one-frame components (order is important), for example:

@@ -25,7 +25,7 @@ namespace YANTH {
         public static void Add(in EcsEntity entity, string text, float chance = 1f, float TTL = 1.5f, bool overwrite = false) {
             if (Random.value > chance)
                 return;
-            
+
             ref var speech = ref entity.Get<Speech>();
             if (!overwrite && speech.TTL > 0) {
                 return;
