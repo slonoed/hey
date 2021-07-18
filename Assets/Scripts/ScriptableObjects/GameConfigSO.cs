@@ -53,5 +53,10 @@ namespace YANTH {
         public float enemyAttachDelayDefault = 2f;
         public AudioClip enemyFightSound;
         public AudioClip enemyDeathSound;
+
+        [Header("Inventory")]
+        public GameObject inventoryItem;
+        public Sprite inventoryCoin;
+        public Sprite inventoryHerb;
     }
 }

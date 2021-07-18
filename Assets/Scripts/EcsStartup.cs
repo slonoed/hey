@@ -7,7 +7,7 @@ namespace YANTH {
     [System.Serializable]
     public class GameRefs {
         public TMP_Text heroCoinsText;
-        public TMP_Text inventoryText;
+        public GameObject inventoryPanel;
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
         public Camera camera;
     }

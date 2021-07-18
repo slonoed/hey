@@ -38,3 +38,6 @@ MonoBehaviour:
   enemyAttachDelayDefault: 2
   enemyFightSound: {fileID: 8300000, guid: 1b176fa454566d84dbbec9988563e95d, type: 3}
   enemyDeathSound: {fileID: 8300000, guid: aeb1c81ab88f9a548ba8fc4e28f070a9, type: 3}
+  inventoryItem: {fileID: 5702479528422023478, guid: 5d1314a2d981c40d79302b688ca1d4b2, type: 3}
+  inventoryCoin: {fileID: 21300000, guid: 0ed23a380130941f986f408f432adc5b, type: 3}
+  inventoryHerb: {fileID: 21300276, guid: e1cefb9d968aa494698c9814a406562f, type: 3}
