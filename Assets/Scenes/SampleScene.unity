@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8830797058549088150, guid: aa72400e5a81748f493ed3a7310bbd33, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8830797059129305095, guid: aa72400e5a81748f493ed3a7310bbd33, type: 3}
       propertyPath: m_RootOrder
       value: 1
