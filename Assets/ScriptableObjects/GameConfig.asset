@@ -19,17 +19,21 @@ MonoBehaviour:
   healthbarPrefab: {fileID: 115316712145838191, guid: beeb5115c37994e7cb75596174621cbc, type: 3}
   heroSpeed: 1.18
   heroMaxHP: 100
-  heroAttackDelay: 1
-  attack: 8
+  heroAttackDelay: 1.3
+  attack: 10
+  heroFightSound: {fileID: 8300000, guid: 6e381d13784ca304faa2f4ad86438dd1, type: 3}
+  heroInventorySound: {fileID: 8300000, guid: cfeaeae5d7b4ee94280df0051b5d5e59, type: 3}
   playerSpeed: 5.16
   playerInventorySize: 8
   resourceGenerationDistance: 6
   resourceDencity: 1.8
-  herbHealingFactor: 2
+  herbHealingFactor: 5
   coinCollectionSound: {fileID: 8300000, guid: 7c461db608d319f4daa1bec986812d1e, type: 3}
   herbCollectionSound: {fileID: 8300000, guid: 5aa5558e8b8dcef4a9aa2c2e00238d3b, type: 3}
-  enemyMaxHPDefault: 20
+  enemyMaxHPDefault: 50
   enemySpeedDefault: 1
   roamDistance: 10
-  enemyAttackDefault: 5
+  enemyAttackDefault: 10
   enemyAttachDelayDefault: 2
+  enemyFightSound: {fileID: 8300000, guid: 1b176fa454566d84dbbec9988563e95d, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: aeb1c81ab88f9a548ba8fc4e28f070a9, type: 3}

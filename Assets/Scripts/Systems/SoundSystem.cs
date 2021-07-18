@@ -10,6 +10,7 @@ namespace YANTH {
                 ref var sound = ref soundFilter.Get1(si);
 
                 AudioSource.PlayClipAtPoint(sound.clip, sound.position);
+                // AudioSource.Play(sound.clip);
 
                 soundFilter.GetEntity(si).Del<Sound>();
             }

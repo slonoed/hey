@@ -19,6 +19,8 @@ namespace YANTH {
         public int heroMaxHP = 100;
         public float heroAttackDelay = 1f;
         public int attack = 10;
+        public AudioClip heroFightSound;
+        public AudioClip heroInventorySound;
 
         [Header("Player")]
         [Range(0.1f, 10f)]
@@ -47,5 +49,7 @@ namespace YANTH {
         public int enemyAttackDefault = 5;
         [Tooltip("Delay in seconds between hits")]
         public float enemyAttachDelayDefault = 2f;
+        public AudioClip enemyFightSound;
+        public AudioClip enemyDeathSound;
     }
 }

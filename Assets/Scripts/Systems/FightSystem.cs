@@ -7,8 +7,9 @@ namespace YANTH {
     sealed class FightSystem : IEcsRunSystem {
         readonly GameConfigSO gameConfig = null;
 
+        readonly EcsWorld world = null;
         readonly EcsFilter<Hero, Clrd, Health> heroFilter = null;
-        readonly EcsFilter<Enemy, Clrd> enemyFilter = null;
+        readonly EcsFilter<Enemy, Clrd, Trnsfrm> enemyFilter = null;
 
         void IEcsRunSystem.Run() {
             // TODO slonoed: this system is overloaded (logically and structurally)
@@ -44,12 +45,16 @@ namespace YANTH {
                         var enemyEntity = hero.targetEnemy;
                         ref var enemyHealth = ref enemyEntity.Get<Health>();
                         enemyHealth.value = Math.Max(0, enemyHealth.value - gameConfig.attack);
+                        
+                        ref var enemyTransform = ref enemyEntity.Get<Trnsfrm>();
+                        CreateSound(gameConfig.heroFightSound, enemyTransform.value.position);
+                        
                         hero.lastHitTime = Time.time;
                         if (enemyHealth.value == 0) {
                             hero.state = HeroState.Roam;
                             ref var enemy = ref enemyEntity.Get<Enemy>();
                             enemy.state = EnemyState.Death;
-                            ref var enemyTransform = ref enemyEntity.Get<Trnsfrm>();
+                            CreateSound(gameConfig.enemyDeathSound, enemyTransform.value.position);
 
                             // Enemy death animation is here
                             enemyTransform.value.DOShakePosition(0.3f, 1f).OnComplete(() => {
@@ -74,6 +79,10 @@ namespace YANTH {
                 ref var heroHealth = ref heroFilter.Get3(hi);
                 heroHealth.value = Math.Max(0, heroHealth.value - enemy.attack);
                 enemy.lastHitTime = Time.time;
+
+                // ref var enemyEntity = ref ;
+                ref var enemyTransform = ref enemyFilter.GetEntity(ei).Get<Trnsfrm>();
+                CreateSound(gameConfig.enemyFightSound, enemyTransform.value.position);
             }
         }
 
@@ -106,6 +115,12 @@ namespace YANTH {
             }
 
             return true;
+        }
+
+        void CreateSound(AudioClip clip, Vector3 position = new Vector3()) {
+            ref var sound = ref world.NewEntity().Get<Sound>();
+            sound.position = position;
+            sound.clip = clip;
         }
     }
 }
