@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 namespace YANTH {
     public class UIManager : MonoBehaviour {
@@ -45,6 +46,12 @@ namespace YANTH {
                     return;
                 case "openCredits":
                     TogglePanel(credits);
+
+                    // tween fade sample, TODO: make background black
+                    CanvasGroup cg = credits.GetComponent<CanvasGroup>();
+                    cg.alpha = 0;
+                    cg.DOFade(1, 1f).SetUpdate(true);
+                    
                     return;
                 case "openPrelude":
                     TogglePanel(prelude);

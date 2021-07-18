@@ -22,7 +22,7 @@ namespace YANTH {
                     }
                     hero.wallet = hero.wallet * (100 - gameConfig.deathMoneyLost) / 100;
 
-                    SpeechUtils.Add(hero.player, gameConfig.sayHeroDeath, 1, 1.5f, true);
+                    SpeechUtils.Add(hero.player, gameConfig.sayHeroDeath, 1, 3f, true);
                     AnalyticsUtils.Emit("hero_death");
                 }
             }
