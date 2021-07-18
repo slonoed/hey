@@ -16,7 +16,7 @@ namespace YANTH {
 
             ref var hero = ref heroEntity.Get<Hero>();
             hero.state = HeroState.Roam;
-            hero.wallet = 30;
+            hero.wallet = 0;
 
             ref var health = ref heroEntity.Get<Health>();
             health.max = gameConfig.heroMaxHP;
