@@ -866,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 30
+      scalar: 35
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4834,7 +4834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098125713204965866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.856704, y: 3.7559216, z: 0}
+  m_LocalPosition: {x: -3, y: 2, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 4558692334500469961}
@@ -4882,7 +4882,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 50
   m_Sprite: {fileID: 4334783836991956000, guid: f62f963c842f6f84aadcd3fec0372fd2, type: 3}
   m_Color: {r: 0.88890743, g: 1, b: 0.645283, a: 1}
   m_FlipX: 0
