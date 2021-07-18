@@ -17,6 +17,8 @@ namespace YANTH {
         [Tooltip("How fast hero is moving")]
         public float heroSpeed = 1f;
         public int heroMaxHP = 100;
+        public float heroAttackDelay = 1f;
+        public int attack = 10;
 
         [Header("Player")]
         [Range(0.1f, 10f)]
