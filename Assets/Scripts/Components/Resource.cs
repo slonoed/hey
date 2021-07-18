@@ -1,5 +1,5 @@
 namespace YANTH {
-    enum ResourceType {
+    public enum ResourceType {
         Empty = 0,
         Coin,
         Herb

@@ -5,7 +5,7 @@ namespace YANTH {
     sealed class HeroMovementSystem : IEcsRunSystem {
         readonly GameConfigSO gameConfig = null;
 
-        readonly EcsFilter<Hero, Trnsfrm> heroFilter = null;
+        readonly EcsFilter<Hero, Trnsfrm>.Exclude<DropReceiver> heroFilter = null;
 
         void IEcsRunSystem.Run() {
             foreach (var hfi in heroFilter) {
