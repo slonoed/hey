@@ -10,6 +10,7 @@ namespace YANTH {
         public GameObject inventoryPanel;
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
         public Camera camera;
+        public Transform heroStartPoint;
     }
 
     sealed class EcsStartup : MonoBehaviour {

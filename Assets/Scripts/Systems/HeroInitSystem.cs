@@ -13,6 +13,7 @@ namespace YANTH {
 
             ref var transform = ref heroEntity.Get<Trnsfrm>();
             transform.value = go.transform;
+            transform.value.position = gameRefs.heroStartPoint.position;
 
             ref var hero = ref heroEntity.Get<Hero>();
             hero.state = HeroState.Roam;
