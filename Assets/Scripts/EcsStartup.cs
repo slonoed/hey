@@ -18,8 +18,10 @@ namespace YANTH {
 #endif
             systems
                 .Add(new HeroInitSystem())
+                .Add(new PlayerInitSystem())
 
                 .Add(new HeroMovementSystem())
+                .Add(new PlayerMovementSystem())
 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
