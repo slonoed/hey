@@ -7,13 +7,16 @@ namespace YANTH {
         readonly EcsWorld world = null;
         readonly GameConfigSO gameConfig = null;
 
-        readonly EcsFilter<Hero, Trnsfrm> heroFilter = null;
+        readonly EcsFilter<Hero, Trnsfrm, ZoneTarget> heroFilter = null;
         readonly EcsFilter<Resource, Trnsfrm> resourcesFilter = null;
 
         void IEcsRunSystem.Run() {
             foreach (var hi in heroFilter) {
                 ref var transform = ref heroFilter.Get2(hi);
-                GenerateResources(transform.value.position);
+                ref var zone = ref heroFilter.Get3(hi);
+                if (!zone.tags.Contains("noResourcesForHero")) {
+                    GenerateResources(transform.value.position);
+                }
 
                 CleanupResources(transform.value.position);
                 // Handle only one hero
@@ -54,7 +57,7 @@ namespace YANTH {
 
             ref var transform = ref entity.Get<Trnsfrm>();
             transform.value = go.transform;
-            
+
             transform.value.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.3f).SetLoops(-1, LoopType.Yoyo);
 
             ref var collider = ref entity.Get<Clrd>();
