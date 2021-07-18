@@ -10,6 +10,7 @@ namespace YANTH {
         public GameObject prelude;
         public GameObject levelEnd;
         public GameObject gameEnd;
+        public GameObject death;
         GameObject[] all;
 
         public bool showMainScreenOnStart;
@@ -17,7 +18,7 @@ namespace YANTH {
         public string currentAction;
 
         void Start() {
-            all = new GameObject[] { mainMenu, credits, prelude, levelEnd, gameEnd };
+            all = new GameObject[] { mainMenu, credits, prelude, levelEnd, gameEnd, death };
             foreach (var panel in all) {
                 if (panel == null) {
                     Lg.Warn("Panel is not assigned in UIManager");
@@ -50,6 +51,9 @@ namespace YANTH {
                     return;
                 case "openGameEnd":
                     TogglePanel(gameEnd);
+                    return;
+                case "openDeath":
+                    TogglePanel(death);
                     return;
                 case "restartGame":
                     Application.LoadLevel(Application.loadedLevel);

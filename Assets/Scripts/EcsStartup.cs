@@ -63,6 +63,7 @@ namespace YANTH {
                 .Add(new HeroSpeechZoneSystem())
                 .Add(new SpeechBubbleSystem())
                 .Add(new LevelChangeSystem())
+                .Add(new HeroDeathSystem())
                 .Add(new DestroySystem())
 
                 // register one-frame components (order is important), for example:
