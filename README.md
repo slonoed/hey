@@ -1,14 +1,3 @@
-# Code style
+Unity game made for Bored pixels jam 8.
 
-Filters field named "somethingFilter"
-Loops use "(x)i" var name for index where "(x)" contains first chars of words in filter name.
-Example
-
-```
-EcsFilter<Player> myCoolPlayerFilter = null
-
-...
-foreach (var mcpi in myCoolPlayerFilter) {
-  ...
-}
-```
+You can play it here http://einn.itch.io/hey
