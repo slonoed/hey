@@ -327,6 +327,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &1423885161 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8830797059129305336, guid: aa72400e5a81748f493ed3a7310bbd33, type: 3}
+  m_PrefabInstance: {fileID: 72377183}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1478814688
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +839,10 @@ PrefabInstance:
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 1539684491}
+    - target: {fileID: 5277247695827364004, guid: 12ea8456f1d7240d991155a6651c1ad6, type: 3}
+      propertyPath: gameRefs.camera
+      value: 
+      objectReference: {fileID: 1423885161}
     - target: {fileID: 5277247695827364004, guid: 12ea8456f1d7240d991155a6651c1ad6, type: 3}
       propertyPath: gameRefs.heroCoinsText
       value: 

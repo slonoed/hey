@@ -4,12 +4,20 @@ using UnityEngine;
 namespace YANTH {
     sealed class PlayerMovementSystem : IEcsRunSystem {
         readonly GameConfigSO gameConfig = null;
+        readonly GameRefs gameRefs = null;
+
         readonly EcsFilter<Player, Trnsfrm> playerFilter = null;
 
         void IEcsRunSystem.Run() {
             foreach (var pi in playerFilter) {
                 ref var transform = ref playerFilter.Get2(pi);
                 transform.value.position += CurrentDirection() * Time.deltaTime * gameConfig.playerSpeed;
+
+                // Keep in camera view
+                Vector3 pos = gameRefs.camera.WorldToViewportPoint(transform.value.position);
+                pos.x = Mathf.Clamp(pos.x, 0.05f, 0.95f);
+                pos.y = Mathf.Clamp(pos.y, 0.05f, 0.95f);
+                transform.value.position = gameRefs.camera.ViewportToWorldPoint(pos);
             }
         }
 
@@ -19,19 +27,6 @@ namespace YANTH {
             // GetAxis works for keyboards and gamepads simultaneously
             dir += Vector3.right * Input.GetAxis("Horizontal");
             dir += Vector3.up * Input.GetAxis("Vertical");
-
-            // if (Input.GetKey(KeyCode.W)) {
-            //     dir += Vector3.up;
-            // }
-            // if (Input.GetKey(KeyCode.A)) {
-            //     dir += Vector3.left;
-            // }
-            // if (Input.GetKey(KeyCode.D)) {
-            //     dir += Vector3.right;
-            // }
-            // if (Input.GetKey(KeyCode.S)) {
-            //     dir += Vector3.down;
-            // }
 
             return dir;
         }

@@ -9,6 +9,7 @@ namespace YANTH {
         public TMP_Text heroCoinsText;
         public TMP_Text inventoryText;
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
+        public Camera camera;
     }
 
     sealed class EcsStartup : MonoBehaviour {

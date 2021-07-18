@@ -4,6 +4,8 @@ using UnityEngine;
 namespace YANTH {
     sealed class HeroMovementSystem : IEcsRunSystem {
         readonly GameConfigSO gameConfig = null;
+        readonly GameRefs gameRefs = null;
+
         readonly EcsFilter<Hero, Trnsfrm> heroFilter = null;
 
         void IEcsRunSystem.Run() {
@@ -14,6 +16,7 @@ namespace YANTH {
                 if (hero.state == HeroState.Roam) {
                     transform.value.position += Vector3.up * Time.deltaTime * gameConfig.heroSpeed;
                 }
+
             }
         }
     }

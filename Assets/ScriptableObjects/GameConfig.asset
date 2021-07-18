@@ -20,7 +20,7 @@ MonoBehaviour:
   heroSpeed: 1.18
   heroMaxHP: 100
   heroAttackDelay: 1
-  attack: 4
+  attack: 8
   playerSpeed: 5.16
   playerInventorySize: 8
   resourceGenerationDistance: 6
