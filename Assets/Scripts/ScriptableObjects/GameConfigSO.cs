@@ -41,6 +41,7 @@ namespace YANTH {
         public int playerInventorySize = 10;
         [Tooltip("When player drops inventory to hero. Can he move or not?")]
         public bool playerCanMoveWhenDrop = false;
+        public float cameraTopOffset = 0f;
 
         [Header("Resources")]
         [Tooltip("How far away from hero resources are generated. Increase if they appear in camera view")]

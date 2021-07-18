@@ -21,7 +21,7 @@ namespace YANTH {
                 // Keep player in camera view
                 Vector3 pos = gameRefs.camera.WorldToViewportPoint(transform.value.position);
                 pos.x = Mathf.Clamp(pos.x, 0.05f, 0.95f);
-                pos.y = Mathf.Clamp(pos.y, 0.07f, 0.93f);
+                pos.y = Mathf.Clamp(pos.y, 0.07f, 1 - gameConfig.cameraTopOffset);
                 transform.value.position = gameRefs.camera.ViewportToWorldPoint(pos);
             }
         }
