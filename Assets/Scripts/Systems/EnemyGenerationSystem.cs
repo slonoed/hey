@@ -44,6 +44,12 @@ namespace YANTH {
                     Lg.Warn("Enemy should have collider: ", enemy.name);
                 }
 
+                ref var animator = ref entity.Get<Anmtr>();
+                animator.value = transform.value.gameObject.GetComponent<Animator>();
+                if (animator.value == null) {
+                    Lg.Warn("Enemy should have Animator: ", enemy.name);
+                }
+
                 // Remove initial prefab to avoid triggering code again
                 entity.Del<EnemyPrefab>();
             }
