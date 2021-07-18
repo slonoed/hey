@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   value:
     transform: {fileID: 4575909316475273469}
-    maxHP: 30
+    maxHP: 35
     speed: 1.5
     attack: 10
     attackDelay: 2

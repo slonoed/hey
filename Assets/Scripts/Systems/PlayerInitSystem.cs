@@ -20,7 +20,7 @@ namespace YANTH {
 
             entity.Get<Player>();
 
-            var position = heroTransform.value.position + Vector3.up * 10;
+            var position = heroTransform.value.position + Vector3.up * 3  + Vector3.right * 2;
             // var position = gameRefs.heroStartPoint.position;
             var go = GameObject.Instantiate(gameConfig.playerPrefab, position, Quaternion.identity);
 

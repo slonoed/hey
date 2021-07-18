@@ -27,7 +27,7 @@ namespace YANTH {
                 var panel = GetOrCreateItemPanel(i);
                 var rect = panel.GetComponent<RectTransform>();
                 // TODO slonoed: remove fixed size
-                rect.anchoredPosition = new Vector2(- Screen.width / 2 + 90 * (i-1), - Screen.height + 150);
+                rect.anchoredPosition = new Vector2( 90 * (i-2), 0);
                 
                 if (i < inventory.items.Length) {
                     panel.gameObject.SetActive(true);

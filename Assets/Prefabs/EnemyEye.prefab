@@ -219,7 +219,7 @@ MonoBehaviour:
     transform: {fileID: 5902578680654603872}
     maxHP: 20
     speed: 1.6
-    attack: 7
+    attack: 8
     attackDelay: 2
 --- !u!58 &4557227782405387848
 CircleCollider2D:

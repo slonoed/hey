@@ -30,6 +30,12 @@ namespace YANTH {
                     } else {
                         playerEntity.Del<DropProducer>();
                         heroEntity.Del<DropReceiver>();
+
+                        ref var hero = ref heroFilter.Get1(hi);
+                        if (touching && hero.wallet <= 3)
+                        {
+                            SpeechUtils.Add(playerEntity, "Press smh to feed him!", 1f, 0.7f, overwrite: false);
+                        }
                     }
                 }
             }
