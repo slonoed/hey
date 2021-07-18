@@ -20,6 +20,7 @@ MonoBehaviour:
   speechBubblePrefab: {fileID: 3942902400185828125, guid: b063061721c344e8aaeff24af135f803, type: 3}
   heroSpeed: 1.15
   heroMaxHP: 100
+  heroInitHP: 10
   nextLevelHealthRestoration: 50
   heroAttackDelay: 1.3
   attack: 10
