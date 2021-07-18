@@ -16,6 +16,7 @@ namespace YANTH {
         [Range(0.1f, 10f)]
         [Tooltip("How fast hero is moving")]
         public float heroSpeed = 1f;
+        public int heroMaxHP = 100;
 
         [Header("Player")]
         [Range(0.1f, 10f)]
@@ -28,6 +29,8 @@ namespace YANTH {
         public float resourceGenerationDistance = 10f;
         [Tooltip("How many resources will be generated in sliding window")]
         public float resourceDencity = 4f;
+        [Tooltip("How many HP will be restored when one herb dropped to hero")]
+        public int herbHealingFactor = 2;
         public AudioClip coinCollectionSound;
         public AudioClip herbCollectionSound;
 

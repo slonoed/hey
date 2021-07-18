@@ -41,6 +41,8 @@ namespace YANTH {
                 .Add(new ResourceGatheringSystem())
                 .Add(new InventoryRenderSystem())
                 .Add(new HealthbarSystem())
+                .Add(new InventoryDropSystem())
+                .Add(new HeroWalletRenderSystem())
                 .Add(new SoundSystem())
                 .Add(new DestroySystem())
 

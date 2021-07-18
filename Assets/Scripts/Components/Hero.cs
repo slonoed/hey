@@ -1,5 +1,5 @@
 namespace YANTH {
-    enum HeroState {
+    public enum HeroState {
         Invalid = 0,
         Roam,
         Fight,
@@ -7,7 +7,8 @@ namespace YANTH {
         Death,
     }
 
-    struct Hero {
+    public struct Hero {
         public HeroState state;
+        public int wallet;
     }
 }
