@@ -76,9 +76,7 @@ namespace YANTH {
                 return;
             }
 
-            ref var sound = ref world.NewEntity().Get<Sound>();
-            sound.position = position;
-            sound.clip = clip;
+            SoundUtils.Create(world, clip, position);
         }
 
         AudioClip ResourceSound(ResourceType type) {
