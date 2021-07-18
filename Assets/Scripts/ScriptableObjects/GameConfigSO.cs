@@ -73,6 +73,7 @@ namespace YANTH {
 
         [Header("======= REPLICS =======")]
         public string[] sayHeroDeath = new string[] { "NOOOOO" };
+        public string[] sayPlayerOverEnemy = new [] { "Watch out!", "Hey, watch out!", "Stupid monster!" };
 
         [Header("======= Sounds =======")]
         public AudioClip heroDeathSound;
