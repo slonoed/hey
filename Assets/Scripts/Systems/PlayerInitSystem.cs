@@ -11,17 +11,18 @@ namespace YANTH {
         public void Init() {
             foreach (var hi in heroFilter) {
                 ref var t = ref heroFilter.Get2(hi);
-                CreatePlayer(t);
+                ref var hero = ref heroFilter.Get1(hi);
+                var playerEntity = CreatePlayer(t, hi);
+                hero.player = playerEntity;
             }
         }
 
-        void CreatePlayer(Trnsfrm heroTransform) {
+        EcsEntity CreatePlayer(Trnsfrm heroTransform, int hi) {
             var entity = world.NewEntity();
 
-            entity.Get<Player>();
+            ref var player = ref entity.Get<Player>();
 
-            var position = heroTransform.value.position + Vector3.up * 3  + Vector3.right * 2;
-            // var position = gameRefs.heroStartPoint.position;
+            var position = heroTransform.value.position + Vector3.up * 3 + Vector3.right * 2;
             var go = GameObject.Instantiate(gameConfig.playerPrefab, position, Quaternion.identity);
 
             ref var transform = ref entity.Get<Trnsfrm>();
@@ -37,7 +38,7 @@ namespace YANTH {
             inventory.size = gameConfig.playerInventorySize;
             inventory.items = new ResourceType[inventory.size];
 
-            // SpeechUtils.Add(entity, "HEY! Use keyboard to move!", 1f, TTL : 5f);
+            return entity;
         }
     }
 }

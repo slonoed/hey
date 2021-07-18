@@ -14,5 +14,7 @@ namespace YANTH {
         public int wallet;
         public EcsEntity targetEnemy;
         public float lastHitTime;
+        public int level;
+        public EcsEntity player;
     }
 }

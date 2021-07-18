@@ -10,8 +10,7 @@ namespace YANTH {
         public GameObject inventoryPanel;
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
         public Camera camera;
-        public Transform heroStartPoint;
-        public Transform playerStartPoint;
+        public Transform levelStartPoints;
         public UIManager uiManager;
     }
 

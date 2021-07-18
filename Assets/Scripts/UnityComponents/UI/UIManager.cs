@@ -8,13 +8,16 @@ namespace YANTH {
         public GameObject mainMenu;
         public GameObject credits;
         public GameObject prelude;
-        public GameObject nextLevel;
+        public GameObject levelEnd;
+        public GameObject gameEnd;
         GameObject[] all;
 
-        public string lastAction;
+        public bool showMainScreenOnStart;
+
+        public string currentAction;
 
         void Start() {
-            all = new GameObject[] { mainMenu, credits, prelude, nextLevel };
+            all = new GameObject[] { mainMenu, credits, prelude, levelEnd, gameEnd };
             foreach (var panel in all) {
                 if (panel == null) {
                     Lg.Warn("Panel is not assigned in UIManager");
@@ -24,15 +27,14 @@ namespace YANTH {
             if (mainMenu.activeSelf || credits.activeSelf || prelude.activeSelf) {
                 Time.timeScale = 0f;
             }
-        }
 
-        void LateUpdate() {
-            lastAction = "";
+            if (showMainScreenOnStart) {
+                RunAction("openMainMenu");
+            }
         }
 
         public void RunAction(string action) {
-            lastAction = action;
-
+            currentAction = action;
             switch (action) {
                 case "openMainMenu":
                     TogglePanel(mainMenu);
@@ -43,12 +45,21 @@ namespace YANTH {
                 case "openPrelude":
                     TogglePanel(prelude);
                     return;
+                case "openLevelEnd":
+                    TogglePanel(levelEnd);
+                    return;
+                case "openGameEnd":
+                    TogglePanel(gameEnd);
+                    return;
+                case "restartGame":
+                    Application.LoadLevel(Application.loadedLevel);
+                    return;
                 case "play":
                     ToggleAllOff();
                     return;
 
                 default:
-                    Lg.Warn("Action is not handled by UIManager", action);
+                    Lg.Warn("Action is not handled by UIManager:", action);
                     return;
             }
         }

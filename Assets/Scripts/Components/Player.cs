@@ -1,5 +1,5 @@
+using Leopotam.Ecs;
+
 namespace YANTH {
-    struct Player {
-        // add your data here.
-    }
+    struct Player { }
 }

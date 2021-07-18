@@ -13,13 +13,14 @@ namespace YANTH {
 
             heroEntity.Get<ZoneTarget>();
 
-            ref var transform = ref heroEntity.Get<Trnsfrm>();
-            transform.value = go.transform;
-            transform.value.position = gameRefs.heroStartPoint.position;
-
             ref var hero = ref heroEntity.Get<Hero>();
             hero.state = HeroState.Roam;
             hero.wallet = 0;
+            hero.level = 1;
+
+            ref var transform = ref heroEntity.Get<Trnsfrm>();
+            transform.value = go.transform;
+            transform.value.position = gameRefs.levelStartPoints.GetChild(hero.level - 1).position;
 
             ref var health = ref heroEntity.Get<Health>();
             health.max = gameConfig.heroMaxHP;
