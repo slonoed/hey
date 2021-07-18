@@ -81,7 +81,7 @@ namespace YANTH {
         }
 
         void RemoveResource(EcsEntity entity) {
-            entity.Destroy();
+            entity.Get<DestroyMark>();
         }
     }
 }

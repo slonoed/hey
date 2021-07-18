@@ -5,7 +5,6 @@ namespace YANTH {
     sealed class PlayerInitSystem : IEcsInitSystem {
         readonly EcsWorld world = null;
         readonly GameConfigSO gameConfig = null;
-        readonly EcsFilter<Player> playerFilter = null;
         readonly EcsFilter<Hero, Trnsfrm> heroFilter = null;
 
         public void Init() {
