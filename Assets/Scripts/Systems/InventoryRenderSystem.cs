@@ -20,7 +20,7 @@ namespace YANTH {
 
             foreach (var item in inventory.items) {
                 if (item != ResourceType.Empty) {
-                    text += ResourceToString(item) + ",";
+                    text += ResourceToString(item) + "\n";
                 }
             }
 
