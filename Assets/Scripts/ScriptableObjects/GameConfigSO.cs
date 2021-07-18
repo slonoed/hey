@@ -29,6 +29,8 @@ namespace YANTH {
         [Tooltip("How fast player can move it's character")]
         public float playerSpeed = 1f;
         public int playerInventorySize = 10;
+        [Tooltip("When player drops inventory to hero. Can he move or not?")]
+        public bool playerCanMoveWhenDrop = false;
 
         [Header("Resources")]
         [Tooltip("How far away from hero resources are generated. Increase if they appear in camera view")]

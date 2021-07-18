@@ -26,6 +26,7 @@ MonoBehaviour:
   heroInventorySound: {fileID: 8300000, guid: cfeaeae5d7b4ee94280df0051b5d5e59, type: 3}
   playerSpeed: 5.16
   playerInventorySize: 8
+  playerCanMoveWhenDrop: 0
   resourceGenerationDistance: 6
   resourceDencity: 1.8
   herbHealingFactor: 5

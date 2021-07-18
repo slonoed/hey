@@ -10,6 +10,10 @@ namespace YANTH {
 
         void IEcsRunSystem.Run() {
             foreach (var pi in playerFilter) {
+                if (!gameConfig.playerCanMoveWhenDrop && playerFilter.GetEntity(pi).Has<DropProducer>()) {
+                    continue;
+                }
+
                 ref var transform = ref playerFilter.Get2(pi);
                 transform.value.position += CurrentDirection() * Time.deltaTime * gameConfig.playerSpeed;
 

@@ -8,7 +8,7 @@ namespace YANTH {
             foreach (var hi in heroFilter) {
                 ref var hero = ref heroFilter.Get1(hi);
                 ref var animator = ref heroFilter.Get2(hi);
-                var stateName = HeroStateToAnimationStateName(hero.state);
+                var stateName = HeroStateToAnimationStateName(hero, heroFilter.GetEntity(hi));
                 if (stateName != animator.currentState) {
                     animator.value.Play(stateName);
                     animator.currentState = stateName;
@@ -16,7 +16,12 @@ namespace YANTH {
             }
         }
 
-        string HeroStateToAnimationStateName(HeroState state) {
+        string HeroStateToAnimationStateName(in Hero hero, in EcsEntity heroEntity) {
+            if (heroEntity.Has<DropReceiver>()) {
+                return "Idle";
+            }
+
+            var state = hero.state;
             switch (state) {
                 case HeroState.Roam:
                     return "Walk";
