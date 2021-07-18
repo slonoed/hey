@@ -14,15 +14,20 @@ namespace YANTH {
 
         void IEcsRunSystem.Run() {
             foreach (var pi in playerFilter) {
-                foreach (var ri in resourceFilter) {
-                    CheckResourceCollision(pi, ri);
+                ref var inventory = ref playerFilter.Get3(pi);
+                // Only collect resources when there is a space in inventory
+                if (IsInventoryHasSpace(inventory)) {
+                    foreach (var ri in resourceFilter) {
+                        CheckCollection(pi, ri);
+                    }
                 }
             }
         }
 
-        void CheckResourceCollision(int pi, int ri) {
+        void CheckCollection(int pi, int ri) {
             ref var playerCldr = ref playerFilter.Get2(pi);
             ref var resourceCldr = ref resourceFilter.Get2(ri);
+
             if (resourceCldr.value.IsTouching(playerCldr.value)) {
                 Collect(pi, ri);
             }
@@ -86,5 +91,15 @@ namespace YANTH {
                     return null;
             }
         }
+
+        bool IsInventoryHasSpace(Inventory inventory) {
+            foreach (var item in inventory.items) {
+                if (item == ResourceType.Empty) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
     }
 }
