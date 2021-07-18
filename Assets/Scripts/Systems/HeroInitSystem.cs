@@ -9,14 +9,19 @@ namespace YANTH {
 
         public void Init() {
             var heroEntity = world.NewEntity();
-
             var go = GameObject.Instantiate(gameConfig.heroPrefab);
 
             ref var transform = ref heroEntity.Get<Trnsfrm>();
             transform.value = go.transform;
 
             ref var hero = ref heroEntity.Get<Hero>();
-            hero.state = HeroState.Wait;
+            hero.state = HeroState.Roam;
+
+            ref var animator = ref heroEntity.Get<Anmtr>();
+            animator.value = go.GetComponent<Animator>();
+            if (animator.value == null) {
+                Lg.Warn("No Animator component on Hero prefab");
+            }
 
             virtualCamera.Follow = go.transform;
         }
