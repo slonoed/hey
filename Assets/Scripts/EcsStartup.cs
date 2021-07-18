@@ -15,6 +15,8 @@ namespace YANTH {
     }
 
     sealed class EcsStartup : MonoBehaviour {
+        public static EcsWorld globalWorld;
+
         public GameConfigSO gameConfig;
 
         public GameRefs gameRefs;
@@ -24,6 +26,8 @@ namespace YANTH {
 
         void Start() {
             world = new EcsWorld();
+            globalWorld = world;
+
             systems = new EcsSystems(world);
 #if UNITY_EDITOR
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create(world);
@@ -36,6 +40,7 @@ namespace YANTH {
                 .Add(new PlayerInitSystem())
 
                 .Add(new EnemyGenerationSystem())
+                .Add(new SpeechZoneCreationSystem())
                 .Add(new HeroMovementSystem())
                 .Add(new FightSystem())
                 .Add(new EnemyMoveSystem())
@@ -52,6 +57,7 @@ namespace YANTH {
                 .Add(new HeroWalletRenderSystem())
                 .Add(new HeroDropReceivingTweenSystem())
                 .Add(new SoundSystem())
+                .Add(new HeroSpeechZoneSystem())
                 .Add(new SpeechBubbleSystem())
                 .Add(new DestroySystem())
 
