@@ -23,8 +23,8 @@ namespace YANTH {
 
                 // Keep in camera view
                 Vector3 pos = gameRefs.camera.WorldToViewportPoint(transform.value.position);
-                pos.x = Mathf.Clamp(pos.x, 0.05f, 0.95f);
-                pos.y = Mathf.Clamp(pos.y, 0.05f, 0.95f);
+                pos.x = Mathf.Clamp(pos.x, 0.1f, 0.9f);
+                pos.y = Mathf.Clamp(pos.y, 0.1f, 0.9f);
                 transform.value.position = gameRefs.camera.ViewportToWorldPoint(pos);
             }
         }

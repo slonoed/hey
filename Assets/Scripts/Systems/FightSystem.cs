@@ -49,7 +49,7 @@ namespace YANTH {
 
                         ref var enemyTransform = ref enemyEntity.Get<Trnsfrm>();
                         CreateSound(gameConfig.heroFightSound, enemyTransform.value.position);
-                        enemyTransform.value.DOMove(enemyTransform.value.position + Vector3.up * 0.5f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
+                        enemyTransform.value.DOMove(enemyTransform.value.position + Vector3.up * 0.3f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
 
                         hero.lastHitTime = Time.time;
                         if (enemyHealth.value == 0) {
