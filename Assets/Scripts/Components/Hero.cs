@@ -1,5 +1,13 @@
 namespace YANTH {
+    enum HeroState {
+        Invalid = 0,
+        Roam,
+        Fight,
+        Wait,
+        Death,
+    }
+
     struct Hero {
-        // add your data here.
+        public HeroState state;
     }
 }

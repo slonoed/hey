@@ -15,7 +15,8 @@ namespace YANTH {
             ref var transform = ref heroEntity.Get<Trnsfrm>();
             transform.value = go.transform;
 
-            heroEntity.Get<Hero>();
+            ref var hero = ref heroEntity.Get<Hero>();
+            hero.state = HeroState.Wait;
 
             virtualCamera.Follow = go.transform;
         }
