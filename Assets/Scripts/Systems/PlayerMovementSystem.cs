@@ -15,10 +15,10 @@ namespace YANTH {
                 }
 
                 ref var transform = ref playerFilter.Get2(pi);
-                
+
                 // if (transform.value.position.y < gameRefs.playerStartPoint.position.y)
                 //     continue;
-                
+
                 transform.value.position += CurrentDirection() * Time.deltaTime * gameConfig.playerSpeed;
 
                 // Keep in camera view

@@ -5,9 +5,6 @@ using UnityEngine;
 
 namespace YANTH {
     sealed class InventoryDropSystem : IEcsRunSystem {
-        readonly GameConfigSO gameConfig = null;
-
-        readonly EcsWorld world = null;
         readonly EcsFilter<Hero, Clrd, Health, Trnsfrm> heroFilter = null;
         readonly EcsFilter<Player, Clrd, Inventory> playerFilter = null;
 
@@ -18,8 +15,8 @@ namespace YANTH {
                     ref var heroCollider = ref heroFilter.Get2(hi);
 
                     var touching = playerCollider.value.IsTouching(heroCollider.value);
-                    var keyDown = Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) 
-                        || Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Joystick1Button0) || Input.GetMouseButtonDown(0);
+                    var keyDown = Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) ||
+                        Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Joystick1Button0) || Input.GetMouseButtonDown(0);
 
                     ref var playerEntity = ref playerFilter.GetEntity(pi);
                     ref var inventory = ref playerFilter.Get3(pi);
@@ -34,9 +31,8 @@ namespace YANTH {
                         heroEntity.Del<DropReceiver>();
 
                         ref var hero = ref heroFilter.Get1(hi);
-                        if (touching && hero.wallet <= 3)
-                        {
-                            SpeechUtils.Add(playerEntity, "Press a button to feed him!", 1f, 0.7f, overwrite: false);
+                        if (touching && hero.wallet <= 3) {
+                            SpeechUtils.Add(playerEntity, "Press a button to feed him!", 1f, 0.7f, overwrite : false);
                         }
                     }
                 }

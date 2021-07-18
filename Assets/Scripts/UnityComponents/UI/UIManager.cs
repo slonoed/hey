@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace YANTH {
     public class UIManager : MonoBehaviour {
         public GameObject mainMenu;
         public GameObject credits;
         public GameObject prelude;
+        public GameObject nextLevel;
         GameObject[] all;
 
+        public string lastAction;
+
         void Start() {
-            all = new GameObject[] { mainMenu, credits, prelude };
+            all = new GameObject[] { mainMenu, credits, prelude, nextLevel };
             foreach (var panel in all) {
                 if (panel == null) {
                     Lg.Warn("Panel is not assigned in UIManager");
@@ -23,7 +26,13 @@ namespace YANTH {
             }
         }
 
+        void LateUpdate() {
+            lastAction = "";
+        }
+
         public void RunAction(string action) {
+            lastAction = action;
+
             switch (action) {
                 case "openMainMenu":
                     TogglePanel(mainMenu);

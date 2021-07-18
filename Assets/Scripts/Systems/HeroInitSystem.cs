@@ -11,6 +11,8 @@ namespace YANTH {
             var heroEntity = world.NewEntity();
             var go = GameObject.Instantiate(gameConfig.heroPrefab);
 
+            heroEntity.Get<ZoneTarget>();
+
             ref var transform = ref heroEntity.Get<Trnsfrm>();
             transform.value = go.transform;
             transform.value.position = gameRefs.heroStartPoint.position;

@@ -12,6 +12,7 @@ namespace YANTH {
         public Camera camera;
         public Transform heroStartPoint;
         public Transform playerStartPoint;
+        public UIManager uiManager;
     }
 
     sealed class EcsStartup : MonoBehaviour {
@@ -39,6 +40,8 @@ namespace YANTH {
                 .Add(new HeroInitSystem())
                 .Add(new PlayerInitSystem())
 
+                .Add(new SpeechZoneCreationSystem())
+                .Add(new ZoneCreationSystem())
                 .Add(new EnemyGenerationSystem())
                 .Add(new SpeechZoneCreationSystem())
                 .Add(new HeroMovementSystem())
@@ -54,11 +57,13 @@ namespace YANTH {
                 .Add(new InventoryDropSystem())
                 .Add(new InventoryDropTransferSystem())
                 .Add(new HeroDropReceivingSystem())
+                .Add(new ZoneSystem())
                 .Add(new HeroWalletRenderSystem())
                 .Add(new HeroDropReceivingTweenSystem())
                 .Add(new SoundSystem())
                 .Add(new HeroSpeechZoneSystem())
                 .Add(new SpeechBubbleSystem())
+                .Add(new LevelChangeSystem())
                 .Add(new DestroySystem())
 
                 // register one-frame components (order is important), for example:
