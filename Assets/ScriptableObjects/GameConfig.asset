@@ -29,7 +29,7 @@ MonoBehaviour:
   playerCanMoveWhenDrop: 1
   resourceGenerationDistance: 6
   resourceDencity: 2.2
-  herbHealingFactor: 4
+  herbHealingFactor: 5
   coinCollectionSound: {fileID: 8300000, guid: 7c461db608d319f4daa1bec986812d1e, type: 3}
   herbCollectionSound: {fileID: 8300000, guid: c2fa93cefc9373c439b1cc08522fa8ea, type: 3}
   enemyMaxHPDefault: 50
