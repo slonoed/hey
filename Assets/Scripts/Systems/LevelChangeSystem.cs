@@ -23,7 +23,7 @@ namespace YANTH {
                     hero.level++;
 
                     if (numOfLevels >= hero.level) {
-                        gameRefs.uiManager.RunAction("openLevelEnd");
+                        gameRefs.uiManager.RunAction("openLevel" + (hero.level-1) + "End");
                         ref var heroTransform = ref heroFilter.Get3(hi);
                         heroTransform.value.position = gameRefs.levelStartPoints.GetChild(hero.level - 1).position;
                         ref var playerTransform = ref hero.player.Get<Trnsfrm>();

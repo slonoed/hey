@@ -32,7 +32,7 @@ namespace YANTH {
 
                         ref var hero = ref heroFilter.Get1(hi);
                         if (touching && hero.wallet <= 3) {
-                            SpeechUtils.Add(playerEntity, "Press a button to feed him!", 1f, 0.7f, overwrite : false);
+                            SpeechUtils.Add(playerEntity, "PRESS A BUTTON TO UNLOAD!", 1f, 1f, overwrite : false);
                         }
                     }
                 }
