@@ -1,4 +1,5 @@
 using Leopotam.Ecs;
+using TMPro;
 using UnityEngine;
 
 namespace YANTH {
@@ -33,6 +34,11 @@ namespace YANTH {
                         health.value = 100 * gameConfig.nextLevelHealthRestoration / health.max;
                     } else {
                         gameRefs.uiManager.RunAction("openGameEnd");
+                        var coinsCounterText = GameObject.FindGameObjectWithTag("CoinsCounter").GetComponent<TMP_Text>();
+                        if (coinsCounterText == null) {
+                            Lg.Warn("Cant find coins counted");
+                            coinsCounterText.text = hero.wallet.ToString();
+                        }
                     }
                 }
 
