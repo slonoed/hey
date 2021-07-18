@@ -49,7 +49,6 @@ namespace YANTH {
                 .Add(new PlayerMovementSystem())
                 .Add(new HeroAnimationSystem())
                 .Add(new EnemyAnimationSystem())
-                .Add(new ResourceGenerationSystem())
                 .Add(new ResourceGatheringSystem())
                 .Add(new InventoryRenderSystem())
                 .Add(new HealthbarSystem())
@@ -64,6 +63,7 @@ namespace YANTH {
                 .Add(new SpeechBubbleSystem())
                 .Add(new LevelChangeSystem())
                 .Add(new HeroDeathSystem())
+                .Add(new ResourceGenerationSystem())
                 .Add(new DestroySystem())
 
                 // register one-frame components (order is important), for example:
