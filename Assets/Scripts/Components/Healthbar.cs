@@ -1,5 +1,7 @@
+using UnityEngine;
+
 namespace YANTH {
     struct Healthbar {
-        // add your data here.
+        public RectTransform rect;
     }
 }

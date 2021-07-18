@@ -14,6 +14,10 @@ namespace YANTH {
             foreach (var ti in targetFilter) {
                 CreateHealthbar(ti);
             }
+
+            foreach (var hi in healthbarFilter) {
+                UpdateView(hi);
+            }
         }
 
         void CreateHealthbar(int ti) {
@@ -22,6 +26,27 @@ namespace YANTH {
             ref var healthbar = ref entity.Get<Healthbar>();
 
             var go = GameObject.Instantiate(gameConfig.healthbarPrefab, targetTransform.value);
+            var foreground = Traverse.FindChildWithName(go, "Foreground");
+            if (foreground == null) {
+                Lg.Warn("Can't find 'Foreground' component on Healthbar prefab");
+                return;
+            }
+
+            healthbar.rect = foreground.GetComponent<RectTransform>();
+            if (healthbar.rect == null) {
+                Lg.Warn("Can't find RectTransform on Healthbar prefab");
+                return;
+            }
+        }
+
+        void UpdateView(int hi) {
+            ref var healthbar = ref healthbarFilter.Get1(hi);
+            ref var health = ref healthbarFilter.Get2(hi);
+
+            // Health value [0;1]
+            var value = (float) health.value / (float) health.max;
+
+            healthbar.rect.anchorMax = new Vector2(value, 1);
         }
     }
 }
