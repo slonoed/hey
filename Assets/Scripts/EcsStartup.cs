@@ -28,6 +28,7 @@ namespace YANTH {
 
                 .Add(new EnemyGenerationSystem())
                 .Add(new HeroMovementSystem())
+                .Add(new EnemyMoveSystem())
                 .Add(new PlayerMovementSystem())
                 .Add(new ResourceGenerationSystem())
                 .Add(new ResourceGatheringSystem())

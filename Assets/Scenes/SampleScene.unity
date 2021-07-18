@@ -471,6 +471,7 @@ MonoBehaviour:
   value:
     transform: {fileID: 1775532907}
     maxHP: 20
+    speed: 3
 --- !u!114 &1775532905
 MonoBehaviour:
   m_ObjectHideFlags: 0

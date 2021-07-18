@@ -27,5 +27,11 @@ namespace YANTH {
         public float resourceGenerationDistance = 10f;
         [Tooltip("How many resources will be generated in sliding window")]
         public float resourceDencity = 4f;
+
+        [Header("Enemies")]
+        [Tooltip("How many HP enemy will have if not setup in editor")]
+        public int enemyMaxHPDefault = 20;
+        [Tooltip("How fast enemy will be if not setup in editor")]
+        public float enemySpeedDefault = 1f;
     }
 }

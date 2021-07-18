@@ -6,5 +6,6 @@ namespace YANTH {
     public struct EnemyPrefab {
         public Transform transform;
         public int maxHP;
+        public float speed;
     }
 }
