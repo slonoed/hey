@@ -16,18 +16,22 @@ namespace YANTH {
         Vector3 CurrentDirection() {
             var dir = new Vector3();
 
-            if (Input.GetKey(KeyCode.W)) {
-                dir += Vector3.up;
-            }
-            if (Input.GetKey(KeyCode.A)) {
-                dir += Vector3.left;
-            }
-            if (Input.GetKey(KeyCode.D)) {
-                dir += Vector3.right;
-            }
-            if (Input.GetKey(KeyCode.S)) {
-                dir += Vector3.down;
-            }
+            // GetAxis works for keyboards and gamepads simultaneously
+            dir += Vector3.right * Input.GetAxis("Horizontal");
+            dir += Vector3.up * Input.GetAxis("Vertical");
+
+            // if (Input.GetKey(KeyCode.W)) {
+            //     dir += Vector3.up;
+            // }
+            // if (Input.GetKey(KeyCode.A)) {
+            //     dir += Vector3.left;
+            // }
+            // if (Input.GetKey(KeyCode.D)) {
+            //     dir += Vector3.right;
+            // }
+            // if (Input.GetKey(KeyCode.S)) {
+            //     dir += Vector3.down;
+            // }
 
             return dir;
         }

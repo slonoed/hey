@@ -63,7 +63,7 @@ namespace YANTH {
         }
 
         Vector3 GetRandomResourcePosition(float bottom, float top) {
-            var x = Random.Range(-5f, 5f);
+            var x = Random.Range(-8f, 8f);
             var y = Random.Range((float) bottom, (float) top);
             return new Vector3(x, y, 0);
         }
