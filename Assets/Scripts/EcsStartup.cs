@@ -25,6 +25,8 @@ namespace YANTH {
         EcsSystems systems;
 
         void Start() {
+            Application.targetFrameRate = 60; // not sure if this is the right place for this setting, but it works
+
             world = new EcsWorld();
             globalWorld = world;
 
