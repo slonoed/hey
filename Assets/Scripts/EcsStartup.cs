@@ -1,6 +1,7 @@
 using Leopotam.Ecs;
 using TMPro;
 using UnityEngine;
+using Voody.UniLeo;
 
 namespace YANTH {
     sealed class EcsStartup : MonoBehaviour {
@@ -20,10 +21,14 @@ namespace YANTH {
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create(systems);
 #endif
             systems
+                .ConvertScene()
+
                 .Add(new HeroInitSystem())
                 .Add(new PlayerInitSystem())
 
+                .Add(new EnemyGenerationSystem())
                 .Add(new HeroMovementSystem())
+                .Add(new EnemyMoveSystem())
                 .Add(new PlayerMovementSystem())
                 .Add(new ResourceGenerationSystem())
                 .Add(new ResourceGatheringSystem())
