@@ -15,8 +15,8 @@ namespace YANTH {
                     ref var heroCollider = ref heroFilter.Get2(hi);
 
                     var touching = playerCollider.value.IsTouching(heroCollider.value);
-                    var keyDown = Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) ||
-                        Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Joystick1Button0) || Input.GetMouseButtonDown(0);
+                    var keyDown = Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightControl) || Input.GetKeyDown(KeyCode.LeftControl) ||
+                        Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetMouseButtonDown(0);
 
                     ref var playerEntity = ref playerFilter.GetEntity(pi);
                     ref var inventory = ref playerFilter.Get3(pi);
