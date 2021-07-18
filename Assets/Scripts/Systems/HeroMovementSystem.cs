@@ -4,7 +4,6 @@ using UnityEngine;
 namespace YANTH {
     sealed class HeroMovementSystem : IEcsRunSystem {
         readonly GameConfigSO gameConfig = null;
-        readonly GameRefs gameRefs = null;
 
         readonly EcsFilter<Hero, Trnsfrm> heroFilter = null;
 
@@ -21,8 +20,6 @@ namespace YANTH {
                     if (transform.value.position.x < 3f && transform.value.position.y % 20 >= 15f && transform.value.position.y % 20 < 20f) // going right
                         transform.value.position += Vector3.right * Time.deltaTime * gameConfig.heroSpeed / 2f;
                 }
-                
-
             }
         }
     }

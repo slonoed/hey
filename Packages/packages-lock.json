@@ -215,11 +215,11 @@
       "url": "https://packages.unity.com"
     },
     "com.voody.unileo": {
-      "version": "https://github.com/voody2506/UniLeo.git",
+      "version": "https://github.com/slonoed/UniLeo.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "edda8316ecb69824d09a434de90f05213864e0fe"
+      "hash": "fd54b82bbbfdc750a572da62fda43b355bb4c3ae"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
