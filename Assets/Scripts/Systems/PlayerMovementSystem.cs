@@ -31,7 +31,7 @@ namespace YANTH {
                     else
                     {
                         // TODO: resume hero following
-                        // gameRefs.virtualCamera.Follow = transform.value.transform;
+                        // gameRefs.virtualCamera.Follow = ;
                     }
                 }
 
