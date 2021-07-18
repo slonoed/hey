@@ -45,7 +45,8 @@ namespace YANTH {
             // Grab transform component
             ref var transform = ref resourceFilter.Get3(ri);
             // Add tween on transform component
-            transform.value.DOMove(playerPosition, 0.4f).OnComplete(() => {
+            transform.value.DOScale(new Vector3(0f, 0f, 0f), 0.3f);
+            transform.value.DOMove(pt.value.position, 0.3f).OnComplete(() => {
                 // When tween done mark this entity to be destroyed
                 entity.Get<DestroyMark>();
 
