@@ -134,7 +134,7 @@ MonoBehaviour:
   value:
     transform: {fileID: 5902578680654603872}
     maxHP: 20
-    speed: 1.4
+    speed: 1.6
     attack: 5
     attackDelay: 2
 --- !u!58 &4557227782405387848
