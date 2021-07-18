@@ -19,10 +19,6 @@ namespace YANTH {
 
             if (gameRefs.virtualCamera.Follow != follow) {
                 gameRefs.virtualCamera.Follow = follow;
-
-                if (follow == null) {
-                    //gameRefs.virtualCamera.
-                }
             }
         }
     }
