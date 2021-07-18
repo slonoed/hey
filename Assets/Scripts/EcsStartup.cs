@@ -4,11 +4,17 @@ using UnityEngine;
 using Voody.UniLeo;
 
 namespace YANTH {
+    [System.Serializable]
+    public class GameRefs {
+        public TMP_Text heroCoinsText;
+        public TMP_Text inventoryText;
+        public Cinemachine.CinemachineVirtualCamera virtualCamera;
+    }
+
     sealed class EcsStartup : MonoBehaviour {
         public GameConfigSO gameConfig;
-        public Cinemachine.CinemachineVirtualCamera virtualCamera;
-        // TODO replace with grouped object to avoid clashes
-        public TMP_Text inventoryText;
+
+        public GameRefs gameRefs;
 
         EcsWorld world;
         EcsSystems systems;
@@ -43,8 +49,7 @@ namespace YANTH {
                 // .OneFrame<TestComponent2> ()
 
                 .Inject(gameConfig)
-                .Inject(virtualCamera)
-                .Inject(inventoryText)
+                .Inject(gameRefs)
                 .Init();
         }
 

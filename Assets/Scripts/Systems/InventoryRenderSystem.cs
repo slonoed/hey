@@ -2,7 +2,7 @@ using Leopotam.Ecs;
 
 namespace YANTH {
     sealed class InventoryRenderSystem : IEcsRunSystem {
-        readonly TMPro.TMP_Text label = null;
+        readonly GameRefs gameRefs;
 
         readonly EcsFilter<Inventory> inventoryFilter = null;
 
@@ -24,7 +24,7 @@ namespace YANTH {
                 }
             }
 
-            label.text = text;
+            gameRefs.inventoryText.text = text;
         }
 
         string ResourceToString(ResourceType type) {

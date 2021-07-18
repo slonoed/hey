@@ -5,7 +5,7 @@ namespace YANTH {
     sealed class HeroInitSystem : IEcsInitSystem {
         readonly EcsWorld world = null;
         readonly GameConfigSO gameConfig = null;
-        readonly Cinemachine.CinemachineVirtualCamera virtualCamera = null;
+        readonly GameRefs gameRefs;
 
         public void Init() {
             var heroEntity = world.NewEntity();
@@ -23,7 +23,7 @@ namespace YANTH {
                 Lg.Warn("No Animator component on Hero prefab");
             }
 
-            virtualCamera.Follow = go.transform;
+            gameRefs.virtualCamera.Follow = go.transform;
         }
     }
 }
