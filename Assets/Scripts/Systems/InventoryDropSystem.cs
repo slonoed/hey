@@ -1,5 +1,5 @@
-using DG.Tweening;
 using System;
+using DG.Tweening;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -18,22 +18,22 @@ namespace YANTH {
                     ref var heroCollider = ref heroFilter.Get2(hi);
                     ref var heroTransform = ref heroFilter.GetEntity(hi).Get<Trnsfrm>();
                     ref var inventory = ref playerFilter.Get3(pi);
-                    
+
                     if (playerCollider.value.IsTouching(heroCollider.value) && inventory.items.Length > 0) {
-                        if (!DOTween.IsTweening(heroTransform.value))
+                        if (!DOTween.IsTweening(heroTransform.value)) {
                             heroTransform.value.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.3f); // zoom hero
+                        }
 
                         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0) || Input.GetMouseButtonDown(0)) {
                             TransferItems(pi, hi);
                             CreateSound(gameConfig.heroInventorySound);
+                            SpeechUtils.Add(playerFilter.GetEntity(pi), "Take this!", 1f);
                         }
-                    }
-                    else if (!DOTween.IsTweening(heroTransform.value)) {
+                    } else if (!DOTween.IsTweening(heroTransform.value)) {
                         heroTransform.value.DOScale(new Vector3(1f, 1f, 1f), 0.3f); // unzoom hero
                     }
                 }
             }
-
 
         }
 
@@ -65,6 +65,7 @@ namespace YANTH {
             sound.position = position;
             sound.clip = clip;
         }
+
     }
 
 }

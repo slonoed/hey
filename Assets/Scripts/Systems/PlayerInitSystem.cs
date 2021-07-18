@@ -34,6 +34,8 @@ namespace YANTH {
             ref var inventory = ref entity.Get<Inventory>();
             inventory.size = gameConfig.playerInventorySize;
             inventory.items = new ResourceType[inventory.size];
+
+            SpeechUtils.Add(entity, "Hey!\nUse WASD to move me!", 5f);
         }
     }
 }

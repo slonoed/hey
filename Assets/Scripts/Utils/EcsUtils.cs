@@ -22,8 +22,12 @@ namespace YANTH {
 
     public static class SpeechUtils {
         // Adds/updates speech component on entity
-        public static void Add(in EcsEntity entity, string text, float TTL) {
+        // When overwrite is true it will replace existing text
+        public static void Add(in EcsEntity entity, string text, float TTL, bool overwrite = true) {
             ref var speech = ref entity.Get<Speech>();
+            if (!overwrite && speech.TTL > 0) {
+                return;
+            }
             speech.text = text;
             speech.TTL = TTL;
         }

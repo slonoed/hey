@@ -58,6 +58,10 @@ namespace YANTH {
                             enemy.state = EnemyState.Death;
                             CreateSound(gameConfig.enemyDeathSound, enemyTransform.value.position);
 
+                            if (UnityEngine.Random.value < 0.3) {
+                                AddSpeechToPlayer("That's my hero!");
+                            }
+
                             // Enemy death animation is here
                             enemyTransform.value.DOShakePosition(0.3f, 1f).OnComplete(() => {
                                 if (enemyEntity.IsAlive()) {
@@ -88,10 +92,9 @@ namespace YANTH {
                 heroTransform.value.DOMove(heroTransform.value.position + Vector3.down * 0.3f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
 
                 SpeechUtils.Add(heroFilter.GetEntity(hi), GetRandomDamageVoidLine(), 0.8f);
-                foreach (var pi in playerFilter) {
-                    if (UnityEngine.Random.value > 0.8) {
-                        SpeechUtils.Add(playerFilter.GetEntity(pi), "HAHA!", 1f);
-                    }
+
+                if (UnityEngine.Random.value < 0.05) {
+                    AddSpeechToPlayer("HAHA!");
                 }
             }
         }
@@ -135,6 +138,12 @@ namespace YANTH {
             var lines = new string[] { "OUCH", "OI", "MOMMY" };
             var idx = UnityEngine.Random.Range(0, lines.Length - 1);
             return lines[idx];
+        }
+
+        void AddSpeechToPlayer(string text) {
+            foreach (var pi in playerFilter) {
+                SpeechUtils.Add(playerFilter.GetEntity(pi), text, 1f, false);
+            }
         }
     }
 }
