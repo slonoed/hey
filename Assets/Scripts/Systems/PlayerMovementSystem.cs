@@ -7,6 +7,7 @@ namespace YANTH {
         readonly GameRefs gameRefs = null;
 
         readonly EcsFilter<Player, Trnsfrm> playerFilter = null;
+        readonly EcsFilter<Hero, Trnsfrm, ZoneTarget> heroFilter = null;
 
         void IEcsRunSystem.Run() {
             foreach (var pi in playerFilter) {
@@ -21,7 +22,20 @@ namespace YANTH {
 
                 transform.value.position += CurrentDirection() * Time.deltaTime * gameConfig.playerSpeed;
 
-                // Keep in camera view
+                foreach (var hi in heroFilter) {
+                    ref var zone = ref heroFilter.Get3(hi);
+                    if (zone.tags.Contains("noCameraFollow")) {
+                        // TODO: stop camera inertia
+                        gameRefs.virtualCamera.Follow = null;
+                    }
+                    else
+                    {
+                        // TODO: resume hero following
+                        // gameRefs.virtualCamera.Follow = transform.value.transform;
+                    }
+                }
+
+                // Keep player in camera view
                 Vector3 pos = gameRefs.camera.WorldToViewportPoint(transform.value.position);
                 pos.x = Mathf.Clamp(pos.x, 0.05f, 0.95f);
                 pos.y = Mathf.Clamp(pos.y, 0.07f, 0.93f);

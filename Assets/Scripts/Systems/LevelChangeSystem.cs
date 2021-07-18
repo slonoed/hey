@@ -38,9 +38,9 @@ namespace YANTH {
                         AnalyticsUtils.Emit("level_complete", "number", (hero.level - 1).ToString());
 
                     } else {
-                        gameRefs.uiManager.coinsCounterText.text = hero.wallet.ToString();
-                        gameRefs.uiManager.RunAction("openGameEnd");
                         AnalyticsUtils.Emit("game_end", "coins", hero.wallet.ToString());
+                        gameRefs.uiManager.RunAction("openGameEnd");
+                        gameRefs.uiManager.coinsCounterText.text = hero.wallet.ToString();
                     }
                 }
 
