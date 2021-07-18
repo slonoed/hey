@@ -33,12 +33,8 @@ namespace YANTH {
                         ref var health = ref heroFilter.Get4(hi);
                         health.value = 100 * gameConfig.nextLevelHealthRestoration / health.max;
                     } else {
+                        gameRefs.uiManager.coinsCounterText.text = hero.wallet.ToString();
                         gameRefs.uiManager.RunAction("openGameEnd");
-                        var coinsCounterText = GameObject.FindGameObjectWithTag("CoinsCounter").GetComponent<TMP_Text>();
-                        if (coinsCounterText == null) {
-                            Lg.Warn("Cant find coins counted");
-                            coinsCounterText.text = hero.wallet.ToString();
-                        }
                     }
                 }
 
@@ -46,7 +42,6 @@ namespace YANTH {
 
             // When user clicked button to go to next level
             if (shouldSwitchLevel) {
-                Lg.Log("SWITCH");
                 gameRefs.uiManager.RunAction("play");
             }
         }

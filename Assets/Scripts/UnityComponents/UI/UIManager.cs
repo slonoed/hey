@@ -15,8 +15,9 @@ namespace YANTH {
         GameObject[] all;
 
         public bool showMainScreenOnStart;
-
         public string currentAction;
+
+        public TMPro.TMP_Text coinsCounterText;
 
         void Start() {
             all = new GameObject[] { mainMenu, credits, prelude, level1End, level2End, gameEnd, death };
