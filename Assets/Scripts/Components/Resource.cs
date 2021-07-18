@@ -1,5 +1,11 @@
 namespace YANTH {
+    enum ResourceType {
+        Empty = 0,
+        Coin,
+        Herb
+    }
+
     struct Resource {
-        // add your data here.
+        public ResourceType type;
     }
 }

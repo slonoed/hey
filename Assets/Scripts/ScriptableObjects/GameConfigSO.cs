@@ -9,6 +9,7 @@ namespace YANTH {
         public GameObject heroPrefab;
         public GameObject playerPrefab;
         public GameObject coinPrefab;
+        public GameObject herbPrefab;
 
         [Header("Hero")]
         [Range(0.1f, 10f)]
@@ -19,6 +20,7 @@ namespace YANTH {
         [Range(0.1f, 10f)]
         [Tooltip("How fast player can move it's character")]
         public float playerSpeed = 1f;
+        public int playerInventorySize = 10;
 
         [Header("Resources")]
         [Tooltip("How far away from hero resources are generated. Increase if they appear in camera view")]

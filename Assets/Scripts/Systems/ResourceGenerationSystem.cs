@@ -44,9 +44,12 @@ namespace YANTH {
         void CreateResouce(Vector3 position) {
             var entity = world.NewEntity();
 
-            entity.Get<Resource>();
+            ref var resource = ref entity.Get<Resource>();
+            resource.type = Random.value > 0.5f ? ResourceType.Herb : ResourceType.Coin;
 
-            var go = GameObject.Instantiate(gameConfig.coinPrefab, position, Quaternion.identity);
+            var pref = resource.type == ResourceType.Coin ? gameConfig.coinPrefab : gameConfig.herbPrefab;
+
+            var go = GameObject.Instantiate(pref, position, Quaternion.identity);
 
             ref var transform = ref entity.Get<Trnsfrm>();
             transform.value = go.transform;

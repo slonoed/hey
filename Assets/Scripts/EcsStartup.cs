@@ -1,10 +1,13 @@
 using Leopotam.Ecs;
+using TMPro;
 using UnityEngine;
 
 namespace YANTH {
     sealed class EcsStartup : MonoBehaviour {
         public GameConfigSO gameConfig;
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
+        // TODO replace with grouped object to avoid clashes
+        public TMP_Text inventoryText;
 
         EcsWorld world;
         EcsSystems systems;
@@ -24,6 +27,7 @@ namespace YANTH {
                 .Add(new PlayerMovementSystem())
                 .Add(new ResourceGenerationSystem())
                 .Add(new ResourceGatheringSystem())
+                .Add(new InventoryRenderSystem())
 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
@@ -31,6 +35,7 @@ namespace YANTH {
 
                 .Inject(gameConfig)
                 .Inject(virtualCamera)
+                .Inject(inventoryText)
                 .Init();
         }
 

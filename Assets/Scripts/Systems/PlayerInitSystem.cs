@@ -31,6 +31,10 @@ namespace YANTH {
             if (cldr.value == null) {
                 Lg.Warn("Player prefab should have Collider2D attached");
             }
+
+            ref var inventory = ref entity.Get<Inventory>();
+            inventory.size = gameConfig.playerInventorySize;
+            inventory.items = new ResourceType[inventory.size];
         }
     }
 }
