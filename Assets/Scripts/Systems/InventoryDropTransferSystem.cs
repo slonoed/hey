@@ -32,7 +32,7 @@ namespace YANTH {
                         producer.lastDropTime = Time.time;
 
                         SoundUtils.Create(world, gameConfig.heroInventorySound, transform.value.position);
-                        SpeechUtils.Add(playerEntity, new []{"Take this!","Eat this!","I'm helping!","Grab a bite!","Dig in!"}, chance: 0.3f, TTL: 1f);
+                        SpeechUtils.Add(playerEntity, new []{"Take this!","I'm useful!","I'm helping!","Dig in!","Help is here!","Grab this!","Loot is here!"}, chance: 0.2f, TTL: 1f);
 
                         // STOP AFTER ONE ITEM TRANSFERED
                         break;

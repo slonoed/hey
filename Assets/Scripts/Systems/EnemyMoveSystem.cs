@@ -20,7 +20,9 @@ namespace YANTH {
                         enemy.state = EnemyState.Roam;
                     }
 
-                    if (enemy.state == EnemyState.Roam) {
+                    var minDistance = 1f;
+                    if (enemy.state == EnemyState.Roam 
+                        || (enemy.state == EnemyState.Fight && Vector2.Distance(enemyTransform.value.position, heroTransform.value.position) > minDistance)) {
                         var step = enemy.speed * Time.deltaTime;
                         enemyTransform.value.position = Vector3.MoveTowards(enemyTransform.value.position, heroTransform.value.position, step);
                     }
