@@ -24,15 +24,13 @@ namespace YANTH {
                 ref var zone = ref heroFilter.Get2(hi);
                 if (zone.tags.Contains("levelEnd")) {
                     hero.level++;
+                    ref var heroTransform = ref heroFilter.Get3(hi);
+                    ref var health = ref heroFilter.Get4(hi);
 
                     if (numOfLevels >= hero.level) {
                         gameRefs.uiManager.RunAction("openLevel" + (hero.level - 1) + "End");
-                        ref var heroTransform = ref heroFilter.Get3(hi);
-                        heroTransform.value.position = gameRefs.levelStartPoints.GetChild(hero.level - 1).position;
-                        ref var playerTransform = ref hero.player.Get<Trnsfrm>();
-                        playerTransform.value.position = heroTransform.value.position + Vector3.up * 3 + Vector3.right * 2;
-                        ref var health = ref heroFilter.Get4(hi);
 
+                        heroTransform.value.position = gameRefs.levelStartPoints.GetChild(hero.level - 1).position;
                         health.value = Math.Max(health.value, 100 * gameConfig.nextLevelHealthRestoration / health.max);
 
                         AnalyticsUtils.Emit("level_complete", "number", (hero.level - 1).ToString());
@@ -41,7 +39,15 @@ namespace YANTH {
                         AnalyticsUtils.Emit("game_end", "coins", hero.wallet.ToString());
                         gameRefs.uiManager.RunAction("openGameEnd");
                         gameRefs.uiManager.coinsCounterText.text = hero.wallet.ToString();
+
+                        hero.level = 1;
+                        hero.wallet = 0;
+                        heroTransform.value.position = gameRefs.levelStartPoints.GetChild(hero.level - 1).position;
+                        health.value = health.max;
                     }
+
+                    ref var playerTransform = ref hero.player.Get<Trnsfrm>();
+                    playerTransform.value.position = heroTransform.value.position + Vector3.up * 3 + Vector3.right * 2;
                 }
 
             }
