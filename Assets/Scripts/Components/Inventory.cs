@@ -1,5 +1,5 @@
 namespace YANTH {
-    struct Inventory {
+    public struct Inventory {
         public int size;
         public ResourceType[] items;
     }

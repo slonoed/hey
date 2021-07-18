@@ -28,19 +28,17 @@ namespace YANTH {
 
             if (resourceCldr.value.IsTouching(playerCldr.value)) {
                 ref var inventory = ref playerFilter.Get3(pi);
-                if (IsInventoryHasSpace(inventory)) {
+                if (InventoryUtils.HasSpace(inventory)) {
                     Collect(pi, ri);
-                }
-                else
-                {
+                } else {
                     foreach (var hi in heroFilter) {
                         ref var hero = ref heroFilter.Get1(hi);
                         if (hero.wallet <= 12) {
                             ref var playerEntity = ref playerFilter.GetEntity(pi);
-                            SpeechUtils.Add(playerEntity, new []{"NO MORE SPACE!","FLY TO HERO!"}, chance: 1f, TTL: 0.7f, overwrite: false);
+                            SpeechUtils.Add(playerEntity, new [] { "NO MORE SPACE!", "FLY TO HERO!" }, chance : 1f, TTL : 0.7f, overwrite : false);
                         }
                     }
-                    
+
                     if (!DOTween.IsTweening(gameRefs.inventoryPanel.transform))
                         gameRefs.inventoryPanel.transform.DOScale(new Vector3(1.15f, 1.15f, 1.15f), 0.2f).SetLoops(2, LoopType.Yoyo);
                 }
@@ -60,10 +58,9 @@ namespace YANTH {
 
             ref var playerEntity = ref playerFilter.GetEntity(pi);
             if (type == ResourceType.Herb)
-                SpeechUtils.Add(playerEntity, new []{"Yummy!","Juicy!","Tasty!","Delicious!","What a treat!","Healthy!","Healing flower!"}, chance: 0.3f, TTL: 1f);
+                SpeechUtils.Add(playerEntity, new [] { "Yummy!", "Juicy!", "Tasty!", "Delicious!", "What a treat!", "Healthy!", "Healing flower!" }, chance : 0.3f, TTL : 1f);
             else
-                SpeechUtils.Add(playerEntity, new []{"Money!","Coin!","Shiny!","Jingle!","Loot!","Rich!","Ooh, money!"}, chance: 0.3f, TTL: 1f);
-                
+                SpeechUtils.Add(playerEntity, new [] { "Money!", "Coin!", "Shiny!", "Jingle!", "Loot!", "Rich!", "Ooh, money!" }, chance : 0.3f, TTL : 1f);
 
             // Mark that resource is already collected by player and no need to react next time
             entity.Get<ResourceCollected>();
@@ -110,15 +107,5 @@ namespace YANTH {
                     return null;
             }
         }
-
-        bool IsInventoryHasSpace(Inventory inventory) {
-            foreach (var item in inventory.items) {
-                if (item == ResourceType.Empty) {
-                    return true;
-                }
-            }
-            return false;
-        }
-
     }
 }
