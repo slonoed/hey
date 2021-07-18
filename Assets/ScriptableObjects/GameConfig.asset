@@ -16,8 +16,11 @@ MonoBehaviour:
   playerPrefab: {fileID: 2098125713204965866, guid: d904e273ec2794a509788465b8e2aa79, type: 3}
   coinPrefab: {fileID: 6260448505657379540, guid: 24d7dccbf01ed4523ab295c447ecf859, type: 3}
   herbPrefab: {fileID: 7328425054245712232, guid: 9c190b07d529b4cbcae8027de8d1955f, type: 3}
+  healthbarPrefab: {fileID: 115316712145838191, guid: beeb5115c37994e7cb75596174621cbc, type: 3}
   heroSpeed: 1.47
   playerSpeed: 5.6
   playerInventorySize: 8
   resourceGenerationDistance: 6
   resourceDencity: 1.8
+  enemyMaxHPDefault: 20
+  enemySpeedDefault: 1

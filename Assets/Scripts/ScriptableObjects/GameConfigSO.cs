@@ -10,6 +10,7 @@ namespace YANTH {
         public GameObject playerPrefab;
         public GameObject coinPrefab;
         public GameObject herbPrefab;
+        public GameObject healthbarPrefab;
 
         [Header("Hero")]
         [Range(0.1f, 10f)]
