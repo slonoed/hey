@@ -62,7 +62,7 @@ namespace YANTH {
             ref var transform = ref entity.Get<Trnsfrm>();
             transform.value = go.transform;
 
-            transform.value.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.3f).SetLoops(-1, LoopType.Yoyo);
+            transform.value.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.3f).SetLoops(50, LoopType.Yoyo);
 
             ref var collider = ref entity.Get<Clrd>();
 

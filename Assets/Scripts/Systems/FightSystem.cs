@@ -96,7 +96,7 @@ namespace YANTH {
                 // SpeechUtils.Add(heroFilter.GetEntity(hi), new [] { "OUCH", "OI", "MOMMY" }, 0.8f);
 
                 foreach (var pi in playerFilter) {
-                    SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "Watch out!", "Hey, watch out!", "Stupid monster!" }, chance : 0.1f, TTL : 1f);
+                    SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "Watch out!", "Hey, watch out!", "Stupid monster!" }, chance : 0.2f, TTL : 1f);
                 }
             }
         }

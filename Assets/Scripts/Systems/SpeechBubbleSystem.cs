@@ -29,12 +29,14 @@ namespace YANTH {
                 }
 
                 if (speech.TTL < 0) {
-                    bubbleCanvas.transform.DOScale(new Vector3(0f, 0f, 0f), 0.15f).OnComplete(() => {
-                        bubbleCanvas.SetActive(false);
+                    if (!DOTween.IsTweening(bubbleCanvas.transform))
+                        bubbleCanvas.transform.DOScale(new Vector3(0f, 0f, 0f), 0.15f).OnComplete(() => {
+                            bubbleCanvas.SetActive(false);
                     });
                 } else {
                     bubbleCanvas.SetActive(true);
-                    bubbleCanvas.transform.DOScale(new Vector3(1f, 1f, 1f), 0.15f);
+                    if (!DOTween.IsTweening(bubbleCanvas.transform))
+                        bubbleCanvas.transform.DOScale(new Vector3(1f, 1f, 1f), 0.15f);
                     speech.TTL -= Time.deltaTime;
                 }
             }
