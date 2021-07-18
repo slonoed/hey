@@ -18,7 +18,7 @@ namespace YANTH {
                 ref var inventory = ref producerFilter.Get2(pi);
                 ref var transform = ref producerFilter.Get3(pi);
                 ref var playerEntity = ref producerFilter.GetEntity(pi);
-                
+
                 var receiverEntity = producer.receiver;
                 if (!receiverEntity.IsAlive() || !receiverEntity.Has<DropReceiver>()) {
                     continue;
@@ -32,7 +32,7 @@ namespace YANTH {
                         producer.lastDropTime = Time.time;
 
                         SoundUtils.Create(world, gameConfig.heroInventorySound, transform.value.position);
-                        SpeechUtils.Add(playerEntity, new []{"Take this!","I'm useful!","I'm helping!","Dig in!","Help is here!","Grab this!","Loot is here!"}, chance: 0.2f, TTL: 1f);
+                        SpeechUtils.Add(playerEntity, new [] { "Take this!", "I'm useful!", "I'm helping!", "Dig in!", "Help is here!", "Grab this!", "Loot is here!" }, chance : 0.2f, TTL : 1f, false, true);
 
                         // STOP AFTER ONE ITEM TRANSFERED
                         break;

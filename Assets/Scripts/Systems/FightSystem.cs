@@ -61,7 +61,7 @@ namespace YANTH {
                             CreateSound(gameConfig.enemyDeathSound, enemyTransform.value.position);
 
                             foreach (var pi in playerFilter) {
-                                SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "And stay dead!", "Monsters, go home!", "Bad monster!", "Мonsters, right?", "Pfff, monster!" }, chance : 0.4f, TTL : 1f);
+                                SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "And stay dead!", "Monsters, go home!", "Bad monster!", "Мonsters, right?", "Pfff, monster!" }, chance : 0.4f, TTL : 1f, false, true);
                             }
 
                             // Enemy death animation is here
@@ -101,7 +101,7 @@ namespace YANTH {
                 // SpeechUtils.Add(heroFilter.GetEntity(hi), new [] { "OUCH", "OI", "MOMMY" }, 0.8f);
 
                 foreach (var pi in playerFilter) {
-                    SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "Hey, watch out!", "Stupid monster!", "Ouch!", "Careful!", "Hit it back!" }, chance : 0.2f, TTL : 1f);
+                    SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "Hey, watch out!", "Stupid monster!", "Ouch!", "Careful!", "Hit it back!" }, chance : 0.2f, TTL : 1f, false, true);
                 }
             }
         }

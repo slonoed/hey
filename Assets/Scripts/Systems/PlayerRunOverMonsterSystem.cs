@@ -13,7 +13,7 @@ namespace YANTH {
                     ref var enemyCollider = ref enemyFilter.Get2(ei);
                     if (enemyCollider.value.IsTouching(collider.value)) {
                         ref var entity = ref palyerFilter.GetEntity(pi);
-                        SpeechUtils.Add(entity, gameConfig.sayPlayerOverEnemy, chance : 1f, TTL : 1f, true);
+                        SpeechUtils.Add(entity, gameConfig.sayPlayerOverEnemy, chance : 1f, TTL : 1f, true, true);
                     }
                 }
             }

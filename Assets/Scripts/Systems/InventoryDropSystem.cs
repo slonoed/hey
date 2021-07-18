@@ -32,7 +32,7 @@ namespace YANTH {
 
                         ref var hero = ref heroFilter.Get1(hi);
                         if (touching && hero.wallet <= 8 && !InventoryUtils.IsEmpty(inventory)) {
-                            SpeechUtils.Add(playerEntity, "PRESS 'E' OR 'SPACE' TO UNLOAD!", 1f, 1f, overwrite : false);
+                            SpeechUtils.Add(playerEntity, "PRESS 'E' OR 'SPACE' TO UNLOAD!", 1f, 1f, overwrite : false, true);
                         }
                     }
                 }
