@@ -14,12 +14,8 @@ namespace YANTH {
 
         void IEcsRunSystem.Run() {
             foreach (var pi in playerFilter) {
-                ref var inventory = ref playerFilter.Get3(pi);
-                // Only collect resources when there is a space in inventory
-                if (IsInventoryHasSpace(inventory)) {
-                    foreach (var ri in resourceFilter) {
-                        CheckCollection(pi, ri);
-                    }
+                foreach (var ri in resourceFilter) {
+                    CheckCollection(pi, ri);
                 }
             }
         }
@@ -29,7 +25,15 @@ namespace YANTH {
             ref var resourceCldr = ref resourceFilter.Get2(ri);
 
             if (resourceCldr.value.IsTouching(playerCldr.value)) {
-                Collect(pi, ri);
+                ref var inventory = ref playerFilter.Get3(pi);
+                if (IsInventoryHasSpace(inventory)) {
+                    Collect(pi, ri);
+                }
+                else
+                {
+                    ref var playerEntity = ref playerFilter.GetEntity(pi);
+                    SpeechUtils.Add(playerEntity, new []{"No more space!","Need to drop first!"});
+                }
             }
         }
 
@@ -43,6 +47,9 @@ namespace YANTH {
 
             AddToInventory(inventory.items, type);
             CreateSound(type, playerPosition);
+
+            ref var playerEntity = ref playerFilter.GetEntity(pi);
+            SpeechUtils.Add(playerEntity, new []{"Yummy!","Sweet loot!","One by one...","Come here..."}, 0.2f);
 
             // Mark that resource is already collected by player and no need to react next time
             entity.Get<ResourceCollected>();

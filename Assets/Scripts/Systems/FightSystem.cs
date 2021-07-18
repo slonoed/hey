@@ -91,10 +91,10 @@ namespace YANTH {
                 ref var heroTransform = ref heroFilter.GetEntity(hi).Get<Trnsfrm>();
                 heroTransform.value.DOMove(heroTransform.value.position + Vector3.down * 0.3f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
 
-                SpeechUtils.Add(heroFilter.GetEntity(hi), GetRandomDamageVoidLine(), 0.8f);
+                // SpeechUtils.Add(heroFilter.GetEntity(hi), new [] { "OUCH", "OI", "MOMMY" }, 0.8f);
 
                 if (UnityEngine.Random.value < 0.05) {
-                    AddSpeechToPlayer("HAHA!");
+                    AddSpeechToPlayer("@#$%!");
                 }
             }
         }
@@ -134,15 +134,9 @@ namespace YANTH {
             SoundUtils.Create(world, clip, position);
         }
 
-        string GetRandomDamageVoidLine() {
-            var lines = new string[] { "OUCH", "OI", "MOMMY" };
-            var idx = UnityEngine.Random.Range(0, lines.Length - 1);
-            return lines[idx];
-        }
-
         void AddSpeechToPlayer(string text) {
             foreach (var pi in playerFilter) {
-                SpeechUtils.Add(playerFilter.GetEntity(pi), text, 1f, false);
+                SpeechUtils.Add(playerFilter.GetEntity(pi), text, 1f, 1f, false);
             }
         }
     }

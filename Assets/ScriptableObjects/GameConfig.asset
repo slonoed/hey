@@ -25,7 +25,7 @@ MonoBehaviour:
   heroFightSound: {fileID: 8300000, guid: 6e381d13784ca304faa2f4ad86438dd1, type: 3}
   heroInventorySound: {fileID: 8300000, guid: cfeaeae5d7b4ee94280df0051b5d5e59, type: 3}
   playerSpeed: 5.16
-  playerInventorySize: 8
+  playerInventorySize: 4
   playerCanMoveWhenDrop: 0
   resourceGenerationDistance: 6
   resourceDencity: 1.8

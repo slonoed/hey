@@ -1,6 +1,7 @@
 using Leopotam.Ecs;
 using TMPro;
 using UnityEngine;
+using DG.Tweening;
 
 namespace YANTH {
     // System renders and controls speech bubbles on entities with transform
@@ -22,15 +23,18 @@ namespace YANTH {
                     bubbleCanvas.name = goName;
                 }
 
-                var label = GetBubbleLabel(bubbleCanvas);
+                TMP_Text label = GetBubbleLabel(bubbleCanvas);
                 if (label != null) {
                     label.text = speech.text;
                 }
 
                 if (speech.TTL < 0) {
-                    bubbleCanvas.SetActive(false);
+                    bubbleCanvas.transform.DOScale(new Vector3(0f, 0f, 0f), 0.15f).OnComplete(() => {
+                        bubbleCanvas.SetActive(false);
+                    });
                 } else {
                     bubbleCanvas.SetActive(true);
+                    bubbleCanvas.transform.DOScale(new Vector3(1f, 1f, 1f), 0.15f);
                     speech.TTL -= Time.deltaTime;
                 }
             }
