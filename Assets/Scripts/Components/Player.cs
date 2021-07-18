@@ -1,5 +1,7 @@
 using Leopotam.Ecs;
 
 namespace YANTH {
-    struct Player { }
+    struct Player {
+        public float allowNextMonsterBubbleTime;
+    }
 }
