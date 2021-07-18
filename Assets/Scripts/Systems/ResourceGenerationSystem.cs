@@ -1,0 +1,77 @@
+using Leopotam.Ecs;
+using UnityEngine;
+
+namespace YANTH {
+    sealed class ResourceGenerationSystem : IEcsRunSystem {
+        readonly EcsWorld world = null;
+        readonly GameConfigSO gameConfig = null;
+
+        readonly EcsFilter<Hero, Trnsfrm> heroFilter = null;
+        readonly EcsFilter<Resource, Trnsfrm> resourcesFilter = null;
+
+        void IEcsRunSystem.Run() {
+            foreach (var hi in heroFilter) {
+                ref var transform = ref heroFilter.Get2(hi);
+                GenerateResources(transform.value.position);
+
+                CleanupResources(transform.value.position);
+                // Handle only one hero
+                return;
+            }
+        }
+
+        void GenerateResources(Vector3 heroPosition) {
+            var windowBottom = heroPosition.y + gameConfig.resourceGenerationDistance;
+            var windowTop = windowBottom + 4f;
+
+            var count = 0;
+
+            foreach (var ri in resourcesFilter) {
+                ref var transform = ref resourcesFilter.Get2(ri);
+                var y = transform.value.position.y;
+
+                if (Nums.IsBetween(windowBottom, y, windowTop)) {
+                    count++;
+                }
+            }
+
+            if (count < gameConfig.resourceDencity) {
+                var pos = GetRandomResourcePosition(windowBottom, windowTop);
+                CreateResouce(pos);
+            }
+        }
+
+        void CreateResouce(Vector3 position) {
+            var entity = world.NewEntity();
+
+            entity.Get<Resource>();
+
+            var go = GameObject.Instantiate(gameConfig.coinPrefab, position, Quaternion.identity);
+
+            ref var transform = ref entity.Get<Trnsfrm>();
+            transform.value = go.transform;
+        }
+
+        Vector3 GetRandomResourcePosition(float bottom, float top) {
+            var x = Random.Range(-5f, 5f);
+            var y = Random.Range((float) bottom, (float) top);
+            return new Vector3(x, y, 0);
+        }
+
+        // Remove resources which are far behind
+        void CleanupResources(Vector3 heroPosition) {
+            foreach (var ri in resourcesFilter) {
+                ref var transform = ref resourcesFilter.Get2(ri);
+                var y = transform.value.position.y;
+
+                if (y < heroPosition.y - 15f) {
+                    RemoveResource(resourcesFilter.GetEntity(ri));
+                }
+            }
+        }
+
+        void RemoveResource(EcsEntity entity) {
+            entity.Destroy();
+        }
+    }
+}
