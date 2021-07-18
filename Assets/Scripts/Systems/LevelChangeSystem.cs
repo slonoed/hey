@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace YANTH {
     sealed class LevelChangeSystem : IEcsRunSystem {
+        readonly GameConfigSO gameConfig = null;
         readonly GameRefs gameRefs = null;
-        readonly EcsFilter<Hero, ZoneEnter, Trnsfrm> heroFilter = null;
+        readonly EcsFilter<Hero, ZoneEnter, Trnsfrm, Health> heroFilter = null;
         readonly EcsFilter<Player, Trnsfrm> playerFilter = null;
 
         string lastAction;
@@ -23,11 +24,13 @@ namespace YANTH {
                     hero.level++;
 
                     if (numOfLevels >= hero.level) {
-                        gameRefs.uiManager.RunAction("openLevel" + (hero.level-1) + "End");
+                        gameRefs.uiManager.RunAction("openLevel" + (hero.level - 1) + "End");
                         ref var heroTransform = ref heroFilter.Get3(hi);
                         heroTransform.value.position = gameRefs.levelStartPoints.GetChild(hero.level - 1).position;
                         ref var playerTransform = ref hero.player.Get<Trnsfrm>();
                         playerTransform.value.position = heroTransform.value.position + Vector3.up * 3 + Vector3.right * 2;
+                        ref var health = ref heroFilter.Get4(hi);
+                        health.value = 100 * gameConfig.nextLevelHealthRestoration / health.max;
                     } else {
                         gameRefs.uiManager.RunAction("openGameEnd");
                     }

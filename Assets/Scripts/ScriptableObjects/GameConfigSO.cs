@@ -19,6 +19,9 @@ namespace YANTH {
         [Tooltip("How fast hero is moving")]
         public float heroSpeed = 1f;
         public int heroMaxHP = 100;
+        public int heroInitHP = 100;
+        [Tooltip("How much helath (% from full) will be restored on new level. But not more than hero has.")]
+        public int nextLevelHealthRestoration = 50;
         public float heroAttackDelay = 1f;
         public int attack = 10;
         [Tooltip("How many coins hero has from the start")]

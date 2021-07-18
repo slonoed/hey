@@ -28,7 +28,7 @@ namespace YANTH {
 
             ref var health = ref heroEntity.Get<Health>();
             health.max = gameConfig.heroMaxHP;
-            health.value = health.max;
+            health.value = Mathf.Min(gameConfig.heroMaxHP, gameConfig.heroInitHP);
 
             ref var animator = ref heroEntity.Get<Anmtr>();
             animator.value = go.GetComponent<Animator>();

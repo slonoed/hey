@@ -18,17 +18,21 @@ MonoBehaviour:
   herbPrefab: {fileID: 7328425054245712232, guid: 9c190b07d529b4cbcae8027de8d1955f, type: 3}
   healthbarPrefab: {fileID: 115316712145838191, guid: beeb5115c37994e7cb75596174621cbc, type: 3}
   speechBubblePrefab: {fileID: 3942902400185828125, guid: b063061721c344e8aaeff24af135f803, type: 3}
-  heroSpeed: 1.18
+  heroSpeed: 1.15
   heroMaxHP: 100
-  heroAttackDelay: 4
+  nextLevelHealthRestoration: 50
+  heroAttackDelay: 1.3
   attack: 10
+  heroInitWallet: 0
   heroFightSound: {fileID: 8300000, guid: 6e381d13784ca304faa2f4ad86438dd1, type: 3}
   heroInventorySound: {fileID: 8300000, guid: 8546e24262d43904c8aee91ccc03f947, type: 3}
-  playerSpeed: 5.16
-  playerInventorySize: 4
+  deathHealthRestoration: 50
+  deathMoneyLost: 50
+  playerSpeed: 5
+  playerInventorySize: 5
   playerCanMoveWhenDrop: 1
   resourceGenerationDistance: 6
-  resourceDencity: 1.8
+  resourceDencity: 2.2
   herbHealingFactor: 5
   coinCollectionSound: {fileID: 8300000, guid: 7c461db608d319f4daa1bec986812d1e, type: 3}
   herbCollectionSound: {fileID: 8300000, guid: c2fa93cefc9373c439b1cc08522fa8ea, type: 3}
@@ -37,8 +41,11 @@ MonoBehaviour:
   roamDistance: 10
   enemyAttackDefault: 10
   enemyAttachDelayDefault: 2
-  enemyFightSound: {fileID: 8300000, guid: 1b176fa454566d84dbbec9988563e95d, type: 3}
+  enemyFightSound: {fileID: 8300000, guid: aa1bf8b0eba03544c8083f1bf1ab1265, type: 3}
   enemyDeathSound: {fileID: 8300000, guid: aeb1c81ab88f9a548ba8fc4e28f070a9, type: 3}
   inventoryItem: {fileID: 5702479528422023478, guid: 5d1314a2d981c40d79302b688ca1d4b2, type: 3}
   inventoryCoin: {fileID: 21300000, guid: ce5e96b5d940b4f55805ab96417b0dab, type: 3}
   inventoryHerb: {fileID: 21300276, guid: e1cefb9d968aa494698c9814a406562f, type: 3}
+  sayHeroDeath:
+  - NOOOOO
+  heroDeathSound: {fileID: 8300000, guid: 1fdfccc8e2e5440718aba69313e01396, type: 3}
