@@ -8,6 +8,7 @@ namespace YANTH {
         readonly EcsWorld world = null;
         readonly GameConfigSO gameConfig = null;
 
+        readonly EcsFilter<Hero> heroFilter = null;
         readonly EcsFilter<Player, Clrd, Inventory, Trnsfrm> playerFilter = null;
         // Grab resources which are not collected yet
         readonly EcsFilter<Resource, Clrd, Trnsfrm>.Exclude<ResourceCollected> resourceFilter = null;
@@ -24,15 +25,25 @@ namespace YANTH {
             ref var playerCldr = ref playerFilter.Get2(pi);
             ref var resourceCldr = ref resourceFilter.Get2(ri);
 
+            var keyDown = Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl) 
+                || Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.Joystick1Button0) || Input.GetMouseButtonDown(0);
+            ref var playerEntity = ref playerFilter.GetEntity(pi);
+            ref var inventory = ref playerFilter.Get3(pi);
+
             if (resourceCldr.value.IsTouching(playerCldr.value)) {
-                ref var inventory = ref playerFilter.Get3(pi);
-                if (IsInventoryHasSpace(inventory)) {
-                    Collect(pi, ri);
-                }
-                else
+                if (keyDown)
                 {
-                    ref var playerEntity = ref playerFilter.GetEntity(pi);
-                    SpeechUtils.Add(playerEntity, new []{"No more space!","Can't take more!","Feed the hero!"}, chance: 1f, TTL: 0.7f, overwrite: false);
+                    if (IsInventoryHasSpace(inventory)) {
+                        Collect(pi, ri);
+                    }
+                    else
+                    {
+                        SpeechUtils.Add(playerEntity, new []{"No more space!","Can't take more!","Feed the hero!"}, chance: 1f, TTL: 0.7f, overwrite: false);
+                    }
+                } 
+                else if (IsInventoryEmpty(inventory))
+                {
+                    SpeechUtils.Add(playerEntity, new []{"Press a button to take!"}, chance: 1f, TTL: 1f, overwrite: false);
                 }
             }
         }
@@ -108,6 +119,17 @@ namespace YANTH {
                 }
             }
             return false;
+        }
+
+        bool IsInventoryEmpty(Inventory inventory) {
+            bool empty = true;
+            foreach (var item in inventory.items) {
+                if (item != ResourceType.Empty) {
+                    empty = false;
+                    break;
+                }
+            }
+            return empty;
         }
 
     }
