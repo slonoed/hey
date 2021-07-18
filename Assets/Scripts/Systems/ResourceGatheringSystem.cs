@@ -5,6 +5,9 @@ using UnityEngine;
 namespace YANTH {
     // Responsible for player collecting resources from the ground
     sealed class ResourceGatheringSystem : IEcsRunSystem {
+        readonly EcsWorld world = null;
+        readonly GameConfigSO gameConfig = null;
+
         readonly EcsFilter<Player, Clrd, Inventory, Trnsfrm> playerFilter = null;
         // Grab resources which are not collected yet
         readonly EcsFilter<Resource, Clrd, Trnsfrm>.Exclude<ResourceCollected> resourceFilter = null;
@@ -27,21 +30,22 @@ namespace YANTH {
 
         void Collect(int pi, int ri) {
             ref var resource = ref resourceFilter.Get1(ri);
+            var type = resource.type;
             ref var inventory = ref playerFilter.Get3(pi);
-
-            AddToInventory(inventory.items, resource.type);
-
+            ref var pt = ref playerFilter.Get4(pi);
+            var playerPosition = pt.value.position;
             var entity = resourceFilter.GetEntity(ri);
+
+            AddToInventory(inventory.items, type);
+            CreateSound(type, playerPosition);
 
             // Mark that resource is already collected by player and no need to react next time
             entity.Get<ResourceCollected>();
 
-            ref var pt = ref playerFilter.Get4(pi);
-
             // Grab transform component
             ref var transform = ref resourceFilter.Get3(ri);
             // Add tween on transform component
-            transform.value.DOMove(pt.value.position, 0.4f).OnComplete(() => {
+            transform.value.DOMove(playerPosition, 0.4f).OnComplete(() => {
                 // When tween done mark this entity to be destroyed
                 entity.Get<DestroyMark>();
 
@@ -56,6 +60,29 @@ namespace YANTH {
                     items[i] = item;
                     return;
                 }
+            }
+        }
+
+        void CreateSound(ResourceType type, Vector3 position) {
+            var clip = ResourceSound(type);
+            if (clip == null) {
+                Lg.Warn("Resource doesn't have sound", type.ToString());
+                return;
+            }
+
+            ref var sound = ref world.NewEntity().Get<Sound>();
+            sound.position = position;
+            sound.clip = clip;
+        }
+
+        AudioClip ResourceSound(ResourceType type) {
+            switch (type) {
+                case ResourceType.Coin:
+                    return gameConfig.coinCollectionSound;
+                case ResourceType.Herb:
+                    return gameConfig.herbCollectionSound;
+                default:
+                    return null;
             }
         }
     }

@@ -34,6 +34,7 @@ namespace YANTH {
                 .Add(new ResourceGatheringSystem())
                 .Add(new InventoryRenderSystem())
                 .Add(new HealthbarSystem())
+                .Add(new SoundSystem())
                 .Add(new DestroySystem())
 
                 // register one-frame components (order is important), for example:

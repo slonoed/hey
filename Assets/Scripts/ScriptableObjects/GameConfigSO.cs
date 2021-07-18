@@ -28,6 +28,8 @@ namespace YANTH {
         public float resourceGenerationDistance = 10f;
         [Tooltip("How many resources will be generated in sliding window")]
         public float resourceDencity = 4f;
+        public AudioClip coinCollectionSound;
+        public AudioClip herbCollectionSound;
 
         [Header("Enemies")]
         [Tooltip("How many HP enemy will have if not setup in editor")]
