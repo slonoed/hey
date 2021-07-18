@@ -16,14 +16,14 @@ namespace YANTH {
             foreach (var ri in receiverFilter) {
                 ref var heroTransform = ref receiverFilter.Get2(ri);
                 if (!DOTween.IsTweening(heroTransform.value)) {
-                    heroTransform.value.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.3f);
+                    heroTransform.value.DOScale(new Vector3(1.3f, 1.3f, 1.3f), 0.2f);
                 }
             }
 
             foreach (var nri in noReceiveFilter) {
                 ref var heroTransform = ref receiverFilter.Get2(nri);
                 if (!DOTween.IsTweening(heroTransform.value)) {
-                    heroTransform.value.DOScale(new Vector3(1f, 1f, 1f), 0.3f);
+                    heroTransform.value.DOScale(new Vector3(1f, 1f, 1f), 0.2f);
                 }
             }
         }

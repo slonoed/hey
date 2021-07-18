@@ -13,7 +13,6 @@ namespace YANTH {
         // Creates entity and adds Sound to it
         public static void Create(EcsWorld world, AudioClip clip, Vector3 position) {
             // Note: add "out" entity and component if needed
-
             ref var sound = ref world.NewEntity().Get<Sound>();
             sound.position = position;
             sound.clip = clip;
@@ -36,7 +35,7 @@ namespace YANTH {
         }
 
         public static void Add(in EcsEntity entity, string[] lines, float chance = 1f, float TTL = 1.5f, bool overwrite = true) {
-            var idx = UnityEngine.Random.Range(0, lines.Length - 1);
+            var idx = UnityEngine.Random.Range(0, lines.Length);
             Add(entity, lines[idx], chance, TTL, overwrite);
         }
     }

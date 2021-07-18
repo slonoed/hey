@@ -32,7 +32,7 @@ namespace YANTH {
                 else
                 {
                     ref var playerEntity = ref playerFilter.GetEntity(pi);
-                    SpeechUtils.Add(playerEntity, new []{"No more space!","Need to drop first!"});
+                    SpeechUtils.Add(playerEntity, new []{"No more space!","Can't take more!","Feed the hero!"}, chance: 1f, TTL: 0.7f, overwrite: false);
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace YANTH {
             CreateSound(type, playerPosition);
 
             ref var playerEntity = ref playerFilter.GetEntity(pi);
-            SpeechUtils.Add(playerEntity, new []{"Yummy!","Sweet loot!","One by one...","Come here..."}, 0.2f);
+            SpeechUtils.Add(playerEntity, new []{"Yummy!","Juicy!","Tasty!","Sweet!","Look!","Hey, look!"}, chance: 0.3f, TTL: 0.5f);
 
             // Mark that resource is already collected by player and no need to react next time
             entity.Get<ResourceCollected>();

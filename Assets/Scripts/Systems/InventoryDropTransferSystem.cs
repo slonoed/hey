@@ -4,7 +4,10 @@ using UnityEngine;
 namespace YANTH {
     // Transferts items from producer with invetory to receiver
     sealed class InventoryDropTransferSystem : IEcsRunSystem {
-        readonly EcsFilter<DropProducer, Inventory> producerFilter = null;
+        readonly GameConfigSO gameConfig = null;
+        readonly EcsWorld world = null;
+        readonly EcsFilter<DropProducer, Inventory, Trnsfrm, Player> producerFilter = null;
+        // readonly EcsFilter<Player> playerFilter = null;
 
         void IEcsRunSystem.Run() {
             foreach (var pi in producerFilter) {
@@ -13,7 +16,9 @@ namespace YANTH {
                     continue;
                 }
                 ref var inventory = ref producerFilter.Get2(pi);
-
+                ref var transform = ref producerFilter.Get3(pi);
+                ref var playerEntity = ref producerFilter.GetEntity(pi);
+                
                 var receiverEntity = producer.receiver;
                 if (!receiverEntity.IsAlive() || !receiverEntity.Has<DropReceiver>()) {
                     continue;
@@ -25,6 +30,9 @@ namespace YANTH {
                         receiver.incomming.Enqueue(inventory.items[i]);
                         inventory.items[i] = ResourceType.Empty;
                         producer.lastDropTime = Time.time;
+
+                        SoundUtils.Create(world, gameConfig.heroInventorySound, transform.value.position);
+                        SpeechUtils.Add(playerEntity, new []{"Take this!","Eat this!","I'm helping!","Grab a bite!","Dig in!","Feed on!"}, chance: 0.3f, TTL: 0.7f);
 
                         // STOP AFTER ONE ITEM TRANSFERED
                         break;

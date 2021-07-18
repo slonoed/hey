@@ -58,8 +58,8 @@ namespace YANTH {
                             enemy.state = EnemyState.Death;
                             CreateSound(gameConfig.enemyDeathSound, enemyTransform.value.position);
 
-                            if (UnityEngine.Random.value < 0.3) {
-                                AddSpeechToPlayer("That's my hero!");
+                            foreach (var pi in playerFilter) {
+                                SpeechUtils.Add(playerFilter.GetEntity(pi), new [] {"And stay dead!", "Monsters, go home!"}, chance: 0.5f, TTL: 0.5f);
                             }
 
                             // Enemy death animation is here
@@ -93,8 +93,8 @@ namespace YANTH {
 
                 // SpeechUtils.Add(heroFilter.GetEntity(hi), new [] { "OUCH", "OI", "MOMMY" }, 0.8f);
 
-                if (UnityEngine.Random.value < 0.05) {
-                    AddSpeechToPlayer("@#$%!");
+                foreach (var pi in playerFilter) {
+                    SpeechUtils.Add(playerFilter.GetEntity(pi), new [] {"Watch out!", "Hey, watch out!", "Stupid monster!"}, chance: 0.1f, TTL: 0.5f);
                 }
             }
         }
@@ -134,10 +134,5 @@ namespace YANTH {
             SoundUtils.Create(world, clip, position);
         }
 
-        void AddSpeechToPlayer(string text) {
-            foreach (var pi in playerFilter) {
-                SpeechUtils.Add(playerFilter.GetEntity(pi), text, 1f, 1f, false);
-            }
-        }
     }
 }

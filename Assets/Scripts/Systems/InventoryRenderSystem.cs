@@ -27,8 +27,8 @@ namespace YANTH {
                 var panel = GetOrCreateItemPanel(i);
                 var rect = panel.GetComponent<RectTransform>();
                 // TODO slonoed: remove fixed size
-                rect.anchoredPosition = new Vector2(0, -90 * i);
-
+                rect.anchoredPosition = new Vector2(- Screen.width / 2 + 90 * (i-1), - Screen.height + 150);
+                
                 if (i < inventory.items.Length) {
                     panel.gameObject.SetActive(true);
                     var image = Traverse.FindChildWithName(panel.gameObject, "Image").GetComponent<Image>();
