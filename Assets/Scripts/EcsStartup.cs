@@ -68,7 +68,7 @@ namespace YANTH {
 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
-                // .OneFrame<TestComponent2> ()
+                .OneFrame<DidPunch>()
 
                 .Inject(gameConfig)
                 .Inject(gameRefs)

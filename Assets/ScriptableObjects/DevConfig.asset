@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d562e64d9b8814f8593e408f4d70322a, type: 3}
+  m_Name: DevConfig
+  m_EditorClassIdentifier: 
+  heroPrefab: {fileID: 6550250847171547645, guid: 7c3dbd255eeb2413b85045798e5f6e07, type: 3}
+  playerPrefab: {fileID: 2098125713204965866, guid: d904e273ec2794a509788465b8e2aa79, type: 3}
+  coinPrefab: {fileID: 6260448505657379540, guid: 24d7dccbf01ed4523ab295c447ecf859, type: 3}
+  herbPrefab: {fileID: 7328425054245712232, guid: 9c190b07d529b4cbcae8027de8d1955f, type: 3}
+  healthbarPrefab: {fileID: 115316712145838191, guid: beeb5115c37994e7cb75596174621cbc, type: 3}
+  speechBubblePrefab: {fileID: 3942902400185828125, guid: b063061721c344e8aaeff24af135f803, type: 3}
+  heroSpeed: 1.18
+  heroMaxHP: 100
+  heroAttackDelay: 4
+  attack: 10
+  heroFightSound: {fileID: 8300000, guid: 6e381d13784ca304faa2f4ad86438dd1, type: 3}
+  heroInventorySound: {fileID: 8300000, guid: 8546e24262d43904c8aee91ccc03f947, type: 3}
+  playerSpeed: 5.16
+  playerInventorySize: 4
+  playerCanMoveWhenDrop: 1
+  resourceGenerationDistance: 6
+  resourceDencity: 1.8
+  herbHealingFactor: 5
+  coinCollectionSound: {fileID: 8300000, guid: 7c461db608d319f4daa1bec986812d1e, type: 3}
+  herbCollectionSound: {fileID: 8300000, guid: c2fa93cefc9373c439b1cc08522fa8ea, type: 3}
+  enemyMaxHPDefault: 50
+  enemySpeedDefault: 1
+  roamDistance: 10
+  enemyAttackDefault: 10
+  enemyAttachDelayDefault: 2
+  enemyFightSound: {fileID: 8300000, guid: 1b176fa454566d84dbbec9988563e95d, type: 3}
+  enemyDeathSound: {fileID: 8300000, guid: aeb1c81ab88f9a548ba8fc4e28f070a9, type: 3}
+  inventoryItem: {fileID: 5702479528422023478, guid: 5d1314a2d981c40d79302b688ca1d4b2, type: 3}
+  inventoryCoin: {fileID: 21300000, guid: ce5e96b5d940b4f55805ab96417b0dab, type: 3}
+  inventoryHerb: {fileID: 21300276, guid: e1cefb9d968aa494698c9814a406562f, type: 3}

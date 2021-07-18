@@ -13,9 +13,6 @@ namespace YANTH {
             var numOfLevels = gameRefs.levelStartPoints.childCount;
             var currentAction = gameRefs.uiManager.currentAction;
             var shouldSwitchLevel = currentAction != lastAction && currentAction == "nextLevel";
-            if (currentAction != lastAction) {
-                Lg.Log(lastAction, "-->\t", currentAction, shouldSwitchLevel);
-            }
             lastAction = currentAction;
 
             foreach (var hi in heroFilter) {

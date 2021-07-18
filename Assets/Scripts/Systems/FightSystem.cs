@@ -47,6 +47,8 @@ namespace YANTH {
                         ref var enemyHealth = ref enemyEntity.Get<Health>();
                         enemyHealth.value = Math.Max(0, enemyHealth.value - gameConfig.attack);
 
+                        heroFilter.GetEntity(hi).Get<DidPunch>();
+
                         ref var enemyTransform = ref enemyEntity.Get<Trnsfrm>();
                         CreateSound(gameConfig.heroFightSound, enemyTransform.value.position);
                         enemyTransform.value.DOMove(enemyTransform.value.position + Vector3.up * 0.3f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
@@ -59,7 +61,7 @@ namespace YANTH {
                             CreateSound(gameConfig.enemyDeathSound, enemyTransform.value.position);
 
                             foreach (var pi in playerFilter) {
-                                SpeechUtils.Add(playerFilter.GetEntity(pi), new [] {"And stay dead!", "Monsters, go home!"}, chance: 0.5f, TTL: 0.5f);
+                                SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "And stay dead!", "Monsters, go home!" }, chance : 0.5f, TTL : 0.5f);
                             }
 
                             // Enemy death animation is here
@@ -94,7 +96,7 @@ namespace YANTH {
                 // SpeechUtils.Add(heroFilter.GetEntity(hi), new [] { "OUCH", "OI", "MOMMY" }, 0.8f);
 
                 foreach (var pi in playerFilter) {
-                    SpeechUtils.Add(playerFilter.GetEntity(pi), new [] {"Watch out!", "Hey, watch out!", "Stupid monster!"}, chance: 0.1f, TTL: 0.5f);
+                    SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "Watch out!", "Hey, watch out!", "Stupid monster!" }, chance : 0.1f, TTL : 0.5f);
                 }
             }
         }

@@ -8,10 +8,15 @@ namespace YANTH {
             foreach (var hi in heroFilter) {
                 ref var hero = ref heroFilter.Get1(hi);
                 ref var animator = ref heroFilter.Get2(hi);
-                var stateName = HeroStateToAnimationStateName(hero, heroFilter.GetEntity(hi));
-                if (stateName != animator.currentState) {
-                    animator.value.Play(stateName);
-                    animator.currentState = stateName;
+                if (heroFilter.GetEntity(hi).Has<DidPunch>()) {
+                    animator.value.Play("Fight");
+                    animator.currentState = "Idle";
+                } else {
+                    var stateName = HeroStateToAnimationStateName(hero, heroFilter.GetEntity(hi));
+                    if (stateName != animator.currentState) {
+                        animator.value.Play(stateName);
+                        animator.currentState = stateName;
+                    }
                 }
             }
         }
@@ -26,7 +31,7 @@ namespace YANTH {
                 case HeroState.Roam:
                     return "Walk";
                 case HeroState.Fight:
-                    return "Fight";
+                    return "Idle";
                 case HeroState.Wait:
                     return "Idle";
                 case HeroState.Death:
