@@ -17,10 +17,12 @@ namespace YANTH {
                     if (item == ResourceType.Coin) {
                         ref var hero = ref heroFilter.Get1(hi);
                         hero.wallet++;
+                        AnalyticsUtils.Emit("drop_coin");
                     }
                     if (item == ResourceType.Herb) {
                         ref var health = ref heroFilter.Get3(hi);
                         health.value = Math.Min(health.value + gameConfig.herbHealingFactor, health.max);
+                        AnalyticsUtils.Emit("drop_herb");
                     }
                 }
             }

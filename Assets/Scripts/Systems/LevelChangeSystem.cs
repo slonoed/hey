@@ -1,7 +1,7 @@
 using System;
 using Leopotam.Ecs;
-using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 namespace YANTH {
     sealed class LevelChangeSystem : IEcsRunSystem {
@@ -34,9 +34,13 @@ namespace YANTH {
                         ref var health = ref heroFilter.Get4(hi);
 
                         health.value = Math.Max(health.value, 100 * gameConfig.nextLevelHealthRestoration / health.max);
+
+                        AnalyticsUtils.Emit("level_complete", "number", (hero.level - 1).ToString());
+
                     } else {
                         gameRefs.uiManager.coinsCounterText.text = hero.wallet.ToString();
                         gameRefs.uiManager.RunAction("openGameEnd");
+                        AnalyticsUtils.Emit("game_end", "coins", hero.wallet.ToString());
                     }
                 }
 
@@ -45,6 +49,7 @@ namespace YANTH {
             // When user clicked button to go to next level
             if (shouldSwitchLevel) {
                 gameRefs.uiManager.RunAction("play");
+                AnalyticsUtils.Emit("level_start");
             }
         }
     }

@@ -61,7 +61,7 @@ namespace YANTH {
                             CreateSound(gameConfig.enemyDeathSound, enemyTransform.value.position);
 
                             foreach (var pi in playerFilter) {
-                                SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "And stay dead!", "Monsters, go home!", "Bad monster!" , "Мonsters, right?", "Pfff, monster!" }, chance : 0.4f, TTL : 1f);
+                                SpeechUtils.Add(playerFilter.GetEntity(pi), new [] { "And stay dead!", "Monsters, go home!", "Bad monster!", "Мonsters, right?", "Pfff, monster!" }, chance : 0.4f, TTL : 1f);
                             }
 
                             // Enemy death animation is here

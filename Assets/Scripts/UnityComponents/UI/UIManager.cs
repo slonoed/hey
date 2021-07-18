@@ -37,6 +37,7 @@ namespace YANTH {
         }
 
         public void RunAction(string action) {
+            AnalyticsUtils.Emit("ui_action", "action", action);
             currentAction = action;
             switch (action) {
                 case "openMainMenu":
