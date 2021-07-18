@@ -48,6 +48,7 @@ namespace YANTH {
                         
                         ref var enemyTransform = ref enemyEntity.Get<Trnsfrm>();
                         CreateSound(gameConfig.heroFightSound, enemyTransform.value.position);
+                        enemyTransform.value.DOMove(enemyTransform.value.position + Vector3.up * 0.5f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
                         
                         hero.lastHitTime = Time.time;
                         if (enemyHealth.value == 0) {
@@ -83,6 +84,8 @@ namespace YANTH {
                 // ref var enemyEntity = ref ;
                 ref var enemyTransform = ref enemyFilter.GetEntity(ei).Get<Trnsfrm>();
                 CreateSound(gameConfig.enemyFightSound, enemyTransform.value.position);
+                ref var heroTransform = ref heroFilter.GetEntity(hi).Get<Trnsfrm>();
+                heroTransform.value.DOMove(heroTransform.value.position + Vector3.down * 0.3f, 0.2f).SetLoops(2, LoopType.Yoyo); // visual feedback on strikes
             }
         }
 
