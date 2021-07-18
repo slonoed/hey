@@ -67,5 +67,8 @@ namespace YANTH {
         public GameObject inventoryItem;
         public Sprite inventoryCoin;
         public Sprite inventoryHerb;
+
+        [Header("======= REPLICS =======")]
+        public string[] sayHeroDeath = new string[] { "NOOOOO" };
     }
 }

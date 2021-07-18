@@ -18,6 +18,8 @@ namespace YANTH {
                         hero.particleSystem.Play();
                     }
                     hero.wallet = hero.wallet * (100 - gameConfig.deathMoneyLost) / 100;
+
+                    SpeechUtils.Add(hero.player, gameConfig.sayHeroDeath, 1, 1.5f, true);
                 }
             }
         }
