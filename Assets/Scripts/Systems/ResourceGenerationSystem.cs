@@ -50,6 +50,13 @@ namespace YANTH {
 
             ref var transform = ref entity.Get<Trnsfrm>();
             transform.value = go.transform;
+
+            ref var collider = ref entity.Get<Clrd>();
+
+            collider.value = go.GetComponent<Collider2D>();
+            if (collider.value == null) {
+                Lg.Warn("coin prefab should have collider");
+            }
         }
 
         Vector3 GetRandomResourcePosition(float bottom, float top) {

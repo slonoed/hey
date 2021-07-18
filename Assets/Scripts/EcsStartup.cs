@@ -23,6 +23,7 @@ namespace YANTH {
                 .Add(new HeroMovementSystem())
                 .Add(new PlayerMovementSystem())
                 .Add(new ResourceGenerationSystem())
+                .Add(new ResourceGatheringSystem())
 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()

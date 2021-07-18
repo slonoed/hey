@@ -9,20 +9,9 @@ namespace YANTH {
         readonly EcsFilter<Hero, Trnsfrm> heroFilter = null;
 
         public void Init() {
-            if (!playerFilter.IsEmpty()) {
-                return;
-            }
-
-            if (heroFilter.IsEmpty()) {
-                // Wait til hero exists
-                return;
-            }
-
             foreach (var hi in heroFilter) {
                 ref var t = ref heroFilter.Get2(hi);
                 CreatePlayer(t);
-                // Only first existing hero
-                return;
             }
         }
 
@@ -36,6 +25,12 @@ namespace YANTH {
 
             ref var transform = ref entity.Get<Trnsfrm>();
             transform.value = go.transform;
+
+            ref var cldr = ref entity.Get<Clrd>();
+            cldr.value = go.GetComponent<Collider2D>();
+            if (cldr.value == null) {
+                Lg.Warn("Player prefab should have Collider2D attached");
+            }
         }
     }
 }
