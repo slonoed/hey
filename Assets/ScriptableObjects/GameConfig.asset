@@ -18,7 +18,7 @@ MonoBehaviour:
   herbPrefab: {fileID: 7328425054245712232, guid: 9c190b07d529b4cbcae8027de8d1955f, type: 3}
   healthbarPrefab: {fileID: 115316712145838191, guid: beeb5115c37994e7cb75596174621cbc, type: 3}
   speechBubblePrefab: {fileID: 3942902400185828125, guid: b063061721c344e8aaeff24af135f803, type: 3}
-  heroSpeed: 1.15
+  heroSpeed: 1.25
   heroMaxHP: 100
   heroInitHP: 100
   nextLevelHealthRestoration: 50

@@ -72,6 +72,7 @@ namespace YANTH {
                     return;
                 case "play":
                     ToggleAllOff();
+                    Time.timeScale = 1f;
                     return;
 
                 default:
@@ -96,7 +97,6 @@ namespace YANTH {
             foreach (var panel in all) {
                 panel.SetActive(false);
             }
-            Time.timeScale = 1f;
         }
     }
 }
