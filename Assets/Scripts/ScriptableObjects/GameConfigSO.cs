@@ -70,5 +70,8 @@ namespace YANTH {
 
         [Header("======= REPLICS =======")]
         public string[] sayHeroDeath = new string[] { "NOOOOO" };
+
+        [Header("======= Sounds =======")]
+        public AudioClip heroDeathSound;
     }
 }

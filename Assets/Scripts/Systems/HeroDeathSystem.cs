@@ -2,9 +2,10 @@ using Leopotam.Ecs;
 
 namespace YANTH {
     sealed class HeroDeathSystem : IEcsRunSystem {
+        readonly EcsWorld world = null;
         readonly GameRefs gameRefs = null;
         readonly GameConfigSO gameConfig = null;
-        readonly EcsFilter<Hero, Health> heroFilter = null;
+        readonly EcsFilter<Hero, Health, Trnsfrm> heroFilter = null;
 
         void IEcsRunSystem.Run() {
             foreach (var hi in heroFilter) {
@@ -16,6 +17,8 @@ namespace YANTH {
 
                     if (hero.wallet > 0) {
                         hero.particleSystem.Play();
+
+                        SoundUtils.Create(world, gameConfig.heroDeathSound, heroFilter.Get3(hi).value.position);
                     }
                     hero.wallet = hero.wallet * (100 - gameConfig.deathMoneyLost) / 100;
 
