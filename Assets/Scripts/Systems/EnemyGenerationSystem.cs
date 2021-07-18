@@ -1,4 +1,5 @@
 using Leopotam.Ecs;
+using UnityEngine;
 
 namespace YANTH {
     sealed class EnemyGenerationSystem : IEcsRunSystem {
@@ -27,6 +28,20 @@ namespace YANTH {
                 enemy.speed = prefabValue.speed;
                 if (enemy.speed == 0) {
                     enemy.speed = gameConfig.enemySpeedDefault;
+                }
+                enemy.attack = prefabValue.attack;
+                if (enemy.attack == 0) {
+                    enemy.attack = gameConfig.enemyAttackDefault;
+                }
+                enemy.attackDelay = prefabValue.attackDelay;
+                if (enemy.attackDelay == 0) {
+                    enemy.attackDelay = gameConfig.enemyAttachDelayDefault;
+                }
+
+                ref var collider = ref entity.Get<Clrd>();
+                collider.value = transform.value.gameObject.GetComponent<Collider2D>();
+                if (collider.value == null) {
+                    Lg.Warn("Enemy should have collider: ", enemy.name);
                 }
 
                 // Remove initial prefab to avoid triggering code again

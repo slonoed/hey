@@ -39,5 +39,11 @@ namespace YANTH {
         public int enemyMaxHPDefault = 20;
         [Tooltip("How fast enemy will be if not setup in editor")]
         public float enemySpeedDefault = 1f;
+        [Tooltip("From what distance enemies see hero and start moving to him?")]
+        public float roamDistance = 10f;
+        [Tooltip("What damage enemy makes on player")]
+        public int enemyAttackDefault = 5;
+        [Tooltip("Delay in seconds between hits")]
+        public float enemyAttachDelayDefault = 2f;
     }
 }

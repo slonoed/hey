@@ -7,5 +7,7 @@ namespace YANTH {
         public Transform transform;
         public int maxHP;
         public float speed;
+        public int attack;
+        public float attackDelay;
     }
 }

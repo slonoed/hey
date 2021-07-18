@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5902578680654603878}
   - component: {fileID: 5902578680654603879}
   - component: {fileID: 5902578680654603876}
+  - component: {fileID: 4557227782405387848}
   m_Layer: 0
   m_Name: EnemyEye
   m_TagString: Untagged
@@ -134,3 +135,19 @@ MonoBehaviour:
     transform: {fileID: 5902578680654603872}
     maxHP: 10
     speed: 1.4
+--- !u!58 &4557227782405387848
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5902578680654603877}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
