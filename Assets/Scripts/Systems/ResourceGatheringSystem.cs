@@ -49,7 +49,11 @@ namespace YANTH {
             CreateSound(type, playerPosition);
 
             ref var playerEntity = ref playerFilter.GetEntity(pi);
-            SpeechUtils.Add(playerEntity, new []{"Yummy!","Juicy!","Tasty!","Sweet!","Look!","Hey, look!"}, chance: 0.3f, TTL: 0.5f);
+            if (type == ResourceType.Herb)
+                SpeechUtils.Add(playerEntity, new []{"Yummy!","Juicy!","Tasty!","Healthy!","Healing flower!"}, chance: 0.3f, TTL: 0.5f);
+            else
+                SpeechUtils.Add(playerEntity, new []{"Money!","Coin!","Shiny!","Rich!","Ooh, money!"}, chance: 0.3f, TTL: 0.5f);
+                
 
             // Mark that resource is already collected by player and no need to react next time
             entity.Get<ResourceCollected>();
