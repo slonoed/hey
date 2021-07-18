@@ -1,3 +1,4 @@
+using System;
 using Leopotam.Ecs;
 using TMPro;
 using UnityEngine;
@@ -31,7 +32,8 @@ namespace YANTH {
                         ref var playerTransform = ref hero.player.Get<Trnsfrm>();
                         playerTransform.value.position = heroTransform.value.position + Vector3.up * 3 + Vector3.right * 2;
                         ref var health = ref heroFilter.Get4(hi);
-                        health.value = 100 * gameConfig.nextLevelHealthRestoration / health.max;
+
+                        health.value = Math.Max(health.value, 100 * gameConfig.nextLevelHealthRestoration / health.max);
                     } else {
                         gameRefs.uiManager.coinsCounterText.text = hero.wallet.ToString();
                         gameRefs.uiManager.RunAction("openGameEnd");
