@@ -9,7 +9,14 @@ namespace YANTH {
             foreach (var hi in heroFilter) {
                 ref var health = ref heroFilter.Get2(hi);
                 if (health.value <= 0) {
-                    gameRefs.uiManager.RunAction("openDeath");
+                    health.value = health.max / 2;
+
+                    ref var hero = ref heroFilter.Get1(hi);
+
+                    if (hero.wallet > 0) {
+                        hero.particleSystem.Play();
+                    }
+                    hero.wallet /= 2;
                 }
             }
         }

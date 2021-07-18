@@ -21,6 +21,8 @@ namespace YANTH {
         public int heroMaxHP = 100;
         public float heroAttackDelay = 1f;
         public int attack = 10;
+        [Tooltip("How many coins hero has from the start")]
+        public int heroInitWallet = 0;
         public AudioClip heroFightSound;
         public AudioClip heroInventorySound;
 

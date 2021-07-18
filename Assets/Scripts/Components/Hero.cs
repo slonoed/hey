@@ -1,4 +1,5 @@
 using Leopotam.Ecs;
+using UnityEngine;
 
 namespace YANTH {
     public enum HeroState {
@@ -16,5 +17,6 @@ namespace YANTH {
         public float lastHitTime;
         public int level;
         public EcsEntity player;
+        public ParticleSystem particleSystem;
     }
 }

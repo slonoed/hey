@@ -15,8 +15,12 @@ namespace YANTH {
 
             ref var hero = ref heroEntity.Get<Hero>();
             hero.state = HeroState.Roam;
-            hero.wallet = 0;
+            hero.wallet = gameConfig.heroInitWallet;
             hero.level = 1;
+            hero.particleSystem = go.GetComponentInChildren<ParticleSystem>();
+            if (hero.particleSystem == null) {
+                Lg.Warn("Hero should have particle system in children");
+            }
 
             ref var transform = ref heroEntity.Get<Trnsfrm>();
             transform.value = go.transform;
