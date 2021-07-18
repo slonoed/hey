@@ -25,6 +25,11 @@ namespace YANTH {
         public int heroInitWallet = 0;
         public AudioClip heroFightSound;
         public AudioClip heroInventorySound;
+        [Header("Hero death")]
+        [Tooltip("How much health to restore in %")]
+        public int deathHealthRestoration = 50;
+        [Tooltip("How much money to loose in %")]
+        public int deathMoneyLost = 50;
 
         [Header("Player")]
         [Range(0.1f, 10f)]

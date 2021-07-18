@@ -22,9 +22,11 @@ MonoBehaviour:
   heroMaxHP: 100
   heroAttackDelay: 1.3
   attack: 10
-  heroInitWallet: 10
+  heroInitWallet: 0
   heroFightSound: {fileID: 8300000, guid: 6e381d13784ca304faa2f4ad86438dd1, type: 3}
   heroInventorySound: {fileID: 8300000, guid: 8546e24262d43904c8aee91ccc03f947, type: 3}
+  deathHealthRestoration: 50
+  deathMoneyLost: 50
   playerSpeed: 5
   playerInventorySize: 5
   playerCanMoveWhenDrop: 1
