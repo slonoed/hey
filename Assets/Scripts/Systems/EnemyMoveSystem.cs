@@ -16,7 +16,6 @@ namespace YANTH {
 
                     var step = enemy.speed * Time.deltaTime;
                     enemyTransform.value.position = Vector3.MoveTowards(enemyTransform.value.position, heroTransform.value.position, step);
-                    Lg.Log("Moving enemy", enemyTransform.value.position.x);
                 }
 
             }

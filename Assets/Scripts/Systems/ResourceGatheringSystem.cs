@@ -5,7 +5,7 @@ using UnityEngine;
 namespace YANTH {
     // Responsible for player collecting resources from the ground
     sealed class ResourceGatheringSystem : IEcsRunSystem {
-        readonly EcsFilter<Player, Clrd, Inventory> playerFilter = null;
+        readonly EcsFilter<Player, Clrd, Inventory, Trnsfrm> playerFilter = null;
         // Grab resources which are not collected yet
         readonly EcsFilter<Resource, Clrd, Trnsfrm>.Exclude<ResourceCollected> resourceFilter = null;
 
@@ -36,10 +36,12 @@ namespace YANTH {
             // Mark that resource is already collected by player and no need to react next time
             entity.Get<ResourceCollected>();
 
+            ref var pt = ref playerFilter.Get4(pi);
+
             // Grab transform component
             ref var transform = ref resourceFilter.Get3(ri);
             // Add tween on transform component
-            transform.value.DOShakePosition(0.3f).OnComplete(() => {
+            transform.value.DOMove(pt.value.position, 0.4f).OnComplete(() => {
                 // When tween done mark this entity to be destroyed
                 entity.Get<DestroyMark>();
 
